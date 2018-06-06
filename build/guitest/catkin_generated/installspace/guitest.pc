@@ -1,0 +1,8 @@
+prefix=/home/nvidia/qt_ros_ws/install
+
+Name: guitest
+Description: Description of guitest
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/nvidia/qt_ros_ws/install/lib 
+Requires: 

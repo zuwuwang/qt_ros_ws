@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/nvidia/qt_ros_ws/devel/setup.sh

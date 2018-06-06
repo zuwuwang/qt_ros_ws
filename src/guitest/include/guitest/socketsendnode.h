@@ -1,0 +1,4 @@
+#ifndef SOCKETSENDNODE_H
+#define SOCKETSENDNODE_H
+
+#endif // SOCKETSENDNODE_H

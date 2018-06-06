@@ -1,0 +1,8 @@
+prefix=/home/nvidia/qt_ros_ws/devel
+
+Name: qtros
+Description: Description of qtros
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/nvidia/qt_ros_ws/devel/lib 
+Requires: 
