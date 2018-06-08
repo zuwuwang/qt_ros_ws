@@ -13,8 +13,8 @@
 #ifndef guitest_SOCKETSENDNODE_HPP_
 #define guitest_SOCKETSENDNODE_HPP_
 
-#define HELLO_WORLD_SERVER_PORT  7754//36892
-#define SERVER_IP_ADDRESS "192.168.1.250"  // 地面工作站IP
+#define HELLO_WORLD_SERVER_PORT  37677
+#define SERVER_IP_ADDRESS "112.74.89.58"  // 地面工作站IP
 #define BUFFER_SIZE 1024
 
 
@@ -44,6 +44,7 @@
 
 // qt include
 #include <QDebug>
+
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
@@ -80,8 +81,8 @@ public:
 Q_SIGNALS:
   void loggingUpdated();
   void rosShutdown();
-  void socketFailed();
-   void socketSend();
+  void socketSend();
+    void socketSendFailed();
 
 private:
   int init_argc;
@@ -90,7 +91,6 @@ private:
   struct sockaddr_in server_addr;
   int client_socket;
   char buffer[BUFFER_SIZE];
-  cv::Mat s_img;  //img2Send
   int length;
   vector<uchar> encode_img;
     QStringListModel logging_model;

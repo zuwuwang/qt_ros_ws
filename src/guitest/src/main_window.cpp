@@ -90,29 +90,29 @@ void MainWindow::showNoMasterMessage() {
 void MainWindow::on_button_connect_clicked(bool check )
 {
   // check environment
-  if ( ui.checkbox_use_environment->isChecked() )
-  {
-    if ( !qnode.init() )
-    {
-			showNoMasterMessage();
-    }
-    else
-    {
-			ui.button_connect->setEnabled(false);
-		}
-  }
-  // qnode init
-  if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
-  {
-    showNoMasterMessage();
-  }
-  else
-  {
-    ui.button_connect->setEnabled(false);
-    ui.line_edit_master->setReadOnly(true);
-    ui.line_edit_host->setReadOnly(true);
-    ui.line_edit_topic->setReadOnly(true);
-  }
+//  if ( ui.checkbox_use_environment->isChecked() )
+//  {
+//    if ( !qnode.init() )
+//    {
+//			showNoMasterMessage();
+//    }
+//    else
+//    {
+//			ui.button_connect->setEnabled(false);
+//		}
+//  }
+//  // qnode init
+//  if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
+//  {
+//    showNoMasterMessage();
+//  }
+//  else
+//  {
+//    ui.button_connect->setEnabled(false);
+//    ui.line_edit_master->setReadOnly(true);
+//    ui.line_edit_host->setReadOnly(true);
+//    ui.line_edit_topic->setReadOnly(true);
+//  }
 
   //TODO,RUN YOUR NODE
   if( ! imagesavenode.init() )
@@ -137,6 +137,14 @@ void MainWindow::on_button_connect_clicked(bool check )
  // speech node
 
  // calPosition node
+
+ // load webmap
+  {
+//    QWebView webmap;
+//   // webmap.load(QUrl("http://www.baidu.com"));
+//    webmap.load(QUrl::fromLocalFile("file:///home/nvidia/qt_ros_ws/test.html"));
+//    webmap.show();
+  }
 }
 
 void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
@@ -190,8 +198,66 @@ void MainWindow::displayCameraImageLabel(){
 
 void MainWindow::socketSendImage(){
   // TODO HERE, send img func todo here
+  // Test
   //system("gnome-terminal  -x bash -c ' roscore '");
+//  cv::Mat s_img = imagesavenode.cameraImage;
+//  imshow("s_img",s_img);
+//  vector<uchar> encode_img;
+//  imencode(".jpg", s_img, encode_img);
+//  int encode_img_size=encode_img.size();
+//     int s_img_size=s_img.rows*s_img.cols*3;
+//     qDebug("filesize is %d,width*hight*3 is %d\n",encode_img_size,s_img_size);
 
+//     uchar* send_buffer=new uchar[encode_img.size()];
+//     copy(encode_img.begin(),encode_img.end(),send_buffer);
+
+//     //2.send file_name
+//     int toSend=encode_img_size, receive  = 0, finished = 0;
+//     QString photoName;
+//     char* file_name;
+//     char char_len[10];
+//     photoName=QString("1.jpg");
+//     file_name=photoName.toLatin1().data();
+//     // file_name,qDebug file_name be empty
+//     //qDebug("file name is %s\n",file_name);
+//     bzero(buffer,BUFFER_SIZE);
+//     int send_flag=send(client_socket, file_name, 10, 0);
+//     if(!send_flag)
+//       {
+//         qDebug(" send file_name failed\n ");
+//         exit(1);
+//       }
+//     qDebug("success send file_name \n");
+//     //3.send image length
+//     sprintf(char_len, "%d", toSend);
+//     send(client_socket, char_len, 10, 0);//hello world!!hei hei(xiao)!!  strlen(char_len)这里要写一个固定长度，然后让服务器端读出一个固定长度，否则会出错
+//     qDebug("char_len is %s\n",char_len);
+
+//     // send test
+
+//     //4.send image data
+//     while(toSend  >  0)
+//     {
+//         int size = qMin(toSend, 100);//以前是1000
+//         if((receive = send(client_socket, send_buffer + finished, size, 0)))  //send wenzi
+//         {
+//             if(receive==-1)
+//             {
+//                 printf ("receive error");
+//                 break;
+//             }
+//             else
+//             {
+//                 toSend -= receive;// shengxia de unsend
+//                 finished += receive; //sended
+//             }
+//         }
+//        // printf("send image success");
+//     }
+
+//     //5.close socket
+//     close(client_socket);
+//     qDebug("close socket\n");
 }
 
 
@@ -238,7 +304,6 @@ void MainWindow::WriteSettings() {
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
     settings.setValue("remember_settings",QVariant(ui.checkbox_remember_settings->isChecked()));
-
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
@@ -254,28 +319,33 @@ void MainWindow::closeEvent(QCloseEvent *event){
 
 void MainWindow::showButtonTestMessage(){
   QMessageBox msgBox;
-  msgBox.setText("button test ...");
+  msgBox.setText(" button test ... ");
   msgBox.exec();
 }
 
 void MainWindow::on_button_test_clicked(bool checked){
   showButtonTestMessage();
-
 }
 
 void MainWindow::on_button_onestepSLAM_clicked(bool checked){
   // all in one launch file
   //system("gnome-terminal -x bash -c 'source /home/ubuntu/turtlebot/devel/setup.bash;roslaunch turtlebot_bringup minimal.launch limited:=true'&");
+    system("gnome-terminal  -x bash -c ' roslaunch usb_cam usb_cam-test.launch '");
 }
 
 void MainWindow::on_button_roscore_clicked(bool checked)
 {
-  //system("gnome-terminal -x bash -c 'source /home/nvidia/qt_ros_ws/devel/setup.bash;roscore limited:=true'&"); // this is run on TX2
-  //system("gnome-terminal  -x bash -c ' roscore '");  // this cmd is run on asus 14.04
-  QWebView webmap;
- // webmap.load(QUrl("http://www.baidu.com"));
-  webmap.load(QUrl::fromLocalFile("file:///home/nvidia/qt_ros_ws/test.html"));
-  webmap.show();
+//  system("gnome-terminal -x bash -c 'source /home/nvidia/qt_ros_ws/devel/setup.bash;roscore limited:=true'&"); // this is run on TX2
+//  system("gnome-terminal  -x bash -c ' roscore '");  // this cmd is run on asus 14.04
+//  QWebView webmap;
+//  webmap.load(QUrl("http://www.baidu.com"));
+//  webmap.load(QUrl::fromLocalFile("file:///home/nvidia/qt_ros_ws/test.html"));
+//  webmap.show();
+  system("gnome-terminal  -x bash -c ' roscore '");
+}
+
+void MainWindow::on_button_openCam_clicked(bool checked){
+  system("gnome-terminal  -x bash -c ' roslaunch usb_cam usb_cam-test.launch '");
 }
 
 }  // namespace guitest

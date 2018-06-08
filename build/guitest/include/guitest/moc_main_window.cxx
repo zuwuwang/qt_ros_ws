@@ -22,7 +22,7 @@ static const uint qt_meta_data_guitest__MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,9 +36,10 @@ static const uint qt_meta_data_guitest__MainWindow[] = {
      146,  138,   20,   20, 0x0a,
      175,  138,   20,   20, 0x0a,
      207,  138,   20,   20, 0x0a,
-     243,   20,   20,   20, 0x0a,
-     263,   20,   20,   20, 0x0a,
-     289,   20,   20,   20, 0x0a,
+     243,  138,   20,   20, 0x0a,
+     275,   20,   20,   20, 0x0a,
+     295,   20,   20,   20, 0x0a,
+     321,   20,   20,   20, 0x0a,
 
        0        // eod
 };
@@ -50,6 +51,7 @@ static const char qt_meta_stringdata_guitest__MainWindow[] = {
     "checked\0on_button_test_clicked(bool)\0"
     "on_button_roscore_clicked(bool)\0"
     "on_button_onestepSLAM_clicked(bool)\0"
+    "on_button_openCam_clicked(bool)\0"
     "updateLoggingView()\0displayCameraImageLabel()\0"
     "socketSendImage()\0"
 };
@@ -66,9 +68,10 @@ void guitest::MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 3: _t->on_button_test_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 4: _t->on_button_roscore_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 5: _t->on_button_onestepSLAM_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 6: _t->updateLoggingView(); break;
-        case 7: _t->displayCameraImageLabel(); break;
-        case 8: _t->socketSendImage(); break;
+        case 6: _t->on_button_openCam_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->updateLoggingView(); break;
+        case 8: _t->displayCameraImageLabel(); break;
+        case 9: _t->socketSendImage(); break;
         default: ;
         }
     }
@@ -106,9 +109,9 @@ int guitest::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

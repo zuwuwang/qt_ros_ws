@@ -298,9 +298,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="button_openCam">
                <property name="text">
-                <string>opencamera</string>
+                <string>openCam</string>
                </property>
               </widget>
              </item>
@@ -322,7 +322,7 @@
                 <string>Clear all waypoints and set the target to the current joint trajectory state.</string>
                </property>
                <property name="text">
-                <string>Connect</string>
+                <string>connect</string>
                </property>
               </widget>
              </item>
@@ -388,9 +388,9 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="button_savemap">
+               <widget class="QPushButton" name="button_saveMap">
                 <property name="text">
-                 <string>savemap</string>
+                 <string>saveMap</string>
                 </property>
                </widget>
               </item>
@@ -406,9 +406,9 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="button_loadmap">
+               <widget class="QPushButton" name="button_loadMap">
                 <property name="text">
-                 <string>loadmap</string>
+                 <string>loadMap</string>
                 </property>
                </widget>
               </item>
@@ -440,14 +440,14 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <widget class="QPushButton" name="button_speech_listen">
+             <widget class="QPushButton" name="button_speechListen">
               <property name="text">
                <string>speechListen</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="button_pos_cal">
+             <widget class="QPushButton" name="button_positionCal">
               <property name="text">
                <string>positionCal</string>
               </property>

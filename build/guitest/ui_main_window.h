@@ -68,7 +68,7 @@ public:
     QLineEdit *line_edit_master;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *button_roscore;
-    QPushButton *pushButton;
+    QPushButton *button_openCam;
     QPushButton *button_connect;
     QLabel *label;
     QLineEdit *line_edit_host;
@@ -77,15 +77,15 @@ public:
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QPushButton *button_onestep;
-    QPushButton *button_savemap;
+    QPushButton *button_saveMap;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *button_rviz;
-    QPushButton *button_loadmap;
+    QPushButton *button_loadMap;
     QGroupBox *groupBox_4;
     QWidget *horizontalLayoutWidget_4;
     QHBoxLayout *horizontalLayout_4;
-    QPushButton *button_speech_listen;
-    QPushButton *button_pos_cal;
+    QPushButton *button_speechListen;
+    QPushButton *button_positionCal;
     QGroupBox *groupBox_3;
     QWidget *horizontalLayoutWidget_3;
     QHBoxLayout *horizontalLayout_3;
@@ -255,10 +255,10 @@ public:
 
         horizontalLayout_5->addWidget(button_roscore);
 
-        pushButton = new QPushButton(groupBox);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        button_openCam = new QPushButton(groupBox);
+        button_openCam->setObjectName(QString::fromUtf8("button_openCam"));
 
-        horizontalLayout_5->addWidget(pushButton);
+        horizontalLayout_5->addWidget(button_openCam);
 
         button_connect = new QPushButton(groupBox);
         button_connect->setObjectName(QString::fromUtf8("button_connect"));
@@ -303,10 +303,10 @@ public:
 
         horizontalLayout->addWidget(button_onestep);
 
-        button_savemap = new QPushButton(layoutWidget);
-        button_savemap->setObjectName(QString::fromUtf8("button_savemap"));
+        button_saveMap = new QPushButton(layoutWidget);
+        button_saveMap->setObjectName(QString::fromUtf8("button_saveMap"));
 
-        horizontalLayout->addWidget(button_savemap);
+        horizontalLayout->addWidget(button_saveMap);
 
 
         verticalLayout_2->addLayout(horizontalLayout);
@@ -318,10 +318,10 @@ public:
 
         horizontalLayout_2->addWidget(button_rviz);
 
-        button_loadmap = new QPushButton(layoutWidget);
-        button_loadmap->setObjectName(QString::fromUtf8("button_loadmap"));
+        button_loadMap = new QPushButton(layoutWidget);
+        button_loadMap->setObjectName(QString::fromUtf8("button_loadMap"));
 
-        horizontalLayout_2->addWidget(button_loadmap);
+        horizontalLayout_2->addWidget(button_loadMap);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -338,15 +338,15 @@ public:
         horizontalLayout_4 = new QHBoxLayout(horizontalLayoutWidget_4);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        button_speech_listen = new QPushButton(horizontalLayoutWidget_4);
-        button_speech_listen->setObjectName(QString::fromUtf8("button_speech_listen"));
+        button_speechListen = new QPushButton(horizontalLayoutWidget_4);
+        button_speechListen->setObjectName(QString::fromUtf8("button_speechListen"));
 
-        horizontalLayout_4->addWidget(button_speech_listen);
+        horizontalLayout_4->addWidget(button_speechListen);
 
-        button_pos_cal = new QPushButton(horizontalLayoutWidget_4);
-        button_pos_cal->setObjectName(QString::fromUtf8("button_pos_cal"));
+        button_positionCal = new QPushButton(horizontalLayoutWidget_4);
+        button_positionCal->setObjectName(QString::fromUtf8("button_positionCal"));
 
-        horizontalLayout_4->addWidget(button_pos_cal);
+        horizontalLayout_4->addWidget(button_positionCal);
 
 
         verticalLayout_3->addWidget(groupBox_4);
@@ -430,24 +430,24 @@ public:
         label_2->setText(QApplication::translate("MainWindowDesign", "Ros IP", 0, QApplication::UnicodeUTF8));
         line_edit_master->setText(QApplication::translate("MainWindowDesign", "http://192.168.1.2:11311/", 0, QApplication::UnicodeUTF8));
         button_roscore->setText(QApplication::translate("MainWindowDesign", "roscore", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("MainWindowDesign", "opencamera", 0, QApplication::UnicodeUTF8));
+        button_openCam->setText(QApplication::translate("MainWindowDesign", "openCam", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         button_connect->setToolTip(QApplication::translate("MainWindowDesign", "Set the target to the current joint trajectory state.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_STATUSTIP
         button_connect->setStatusTip(QApplication::translate("MainWindowDesign", "Clear all waypoints and set the target to the current joint trajectory state.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_STATUSTIP
-        button_connect->setText(QApplication::translate("MainWindowDesign", "Connect", 0, QApplication::UnicodeUTF8));
+        button_connect->setText(QApplication::translate("MainWindowDesign", "connect", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindowDesign", "Ros Master Url", 0, QApplication::UnicodeUTF8));
         line_edit_host->setText(QApplication::translate("MainWindowDesign", "192.168.1.67", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("MainWindowDesign", "Run Laser SLAM", 0, QApplication::UnicodeUTF8));
         button_onestep->setText(QApplication::translate("MainWindowDesign", "onestepSLAM", 0, QApplication::UnicodeUTF8));
-        button_savemap->setText(QApplication::translate("MainWindowDesign", "savemap", 0, QApplication::UnicodeUTF8));
+        button_saveMap->setText(QApplication::translate("MainWindowDesign", "saveMap", 0, QApplication::UnicodeUTF8));
         button_rviz->setText(QApplication::translate("MainWindowDesign", "rviz", 0, QApplication::UnicodeUTF8));
-        button_loadmap->setText(QApplication::translate("MainWindowDesign", "loadmap", 0, QApplication::UnicodeUTF8));
+        button_loadMap->setText(QApplication::translate("MainWindowDesign", "loadMap", 0, QApplication::UnicodeUTF8));
         groupBox_4->setTitle(QApplication::translate("MainWindowDesign", "SpeechAssistance", 0, QApplication::UnicodeUTF8));
-        button_speech_listen->setText(QApplication::translate("MainWindowDesign", "speechListen", 0, QApplication::UnicodeUTF8));
-        button_pos_cal->setText(QApplication::translate("MainWindowDesign", "positionCal", 0, QApplication::UnicodeUTF8));
+        button_speechListen->setText(QApplication::translate("MainWindowDesign", "speechListen", 0, QApplication::UnicodeUTF8));
+        button_positionCal->setText(QApplication::translate("MainWindowDesign", "positionCal", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("MainWindowDesign", "Get Resault", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("MainWindowDesign", "peopleNumber:", 0, QApplication::UnicodeUTF8));
         button_test->setText(QApplication::translate("MainWindowDesign", "buttton_test", 0, QApplication::UnicodeUTF8));
