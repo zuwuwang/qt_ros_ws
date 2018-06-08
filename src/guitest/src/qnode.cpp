@@ -3,7 +3,9 @@
  *
  * @brief Ros communication central!
  *
- * @date February 2011
+ * @date june 2018
+ *
+ * @auth  wangZuWu
  **/
 
 /*****************************************************************************
@@ -80,7 +82,7 @@ void QNode::run() {
 		ss << "hello world " << count;
 		msg.data = ss.str();
 		chatter_publisher.publish(msg);
-		log(Info,std::string("I sent: ")+msg.data);
+    log(Info,std::string("I sent: ")+msg.data);
 		ros::spinOnce();
 		loop_rate.sleep();
 		++count;

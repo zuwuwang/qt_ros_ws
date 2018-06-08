@@ -22,7 +22,7 @@ static const uint qt_meta_data_guitest__MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,10 +33,12 @@ static const uint qt_meta_data_guitest__MainWindow[] = {
       21,   20,   20,   20, 0x0a,
       54,   48,   20,   20, 0x0a,
       92,   86,   20,   20, 0x0a,
-     138,   48,   20,   20, 0x0a,
-     167,   48,   20,   20, 0x0a,
-     203,   20,   20,   20, 0x0a,
-     223,   20,   20,   20, 0x0a,
+     146,  138,   20,   20, 0x0a,
+     175,  138,   20,   20, 0x0a,
+     207,  138,   20,   20, 0x0a,
+     243,   20,   20,   20, 0x0a,
+     263,   20,   20,   20, 0x0a,
+     289,   20,   20,   20, 0x0a,
 
        0        // eod
 };
@@ -45,9 +47,11 @@ static const char qt_meta_stringdata_guitest__MainWindow[] = {
     "guitest::MainWindow\0\0on_actionAbout_triggered()\0"
     "check\0on_button_connect_clicked(bool)\0"
     "state\0on_checkbox_use_environment_stateChanged(int)\0"
-    "on_button_test_clicked(bool)\0"
+    "checked\0on_button_test_clicked(bool)\0"
+    "on_button_roscore_clicked(bool)\0"
     "on_button_onestepSLAM_clicked(bool)\0"
     "updateLoggingView()\0displayCameraImageLabel()\0"
+    "socketSendImage()\0"
 };
 
 void guitest::MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -60,9 +64,11 @@ void guitest::MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 1: _t->on_button_connect_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 2: _t->on_checkbox_use_environment_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->on_button_test_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 4: _t->on_button_onestepSLAM_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 5: _t->updateLoggingView(); break;
-        case 6: _t->displayCameraImageLabel(); break;
+        case 4: _t->on_button_roscore_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 5: _t->on_button_onestepSLAM_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 6: _t->updateLoggingView(); break;
+        case 7: _t->displayCameraImageLabel(); break;
+        case 8: _t->socketSendImage(); break;
         default: ;
         }
     }
@@ -100,9 +106,9 @@ int guitest::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

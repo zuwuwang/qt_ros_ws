@@ -448,6 +448,30 @@ include/guitest/moc_qnode.cxx.s:
 	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.s
 .PHONY : include/guitest/moc_qnode.cxx.s
 
+include/guitest/moc_socketsend_node.o: include/guitest/moc_socketsend_node.cxx.o
+.PHONY : include/guitest/moc_socketsend_node.o
+
+# target to build an object file
+include/guitest/moc_socketsend_node.cxx.o:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o
+.PHONY : include/guitest/moc_socketsend_node.cxx.o
+
+include/guitest/moc_socketsend_node.i: include/guitest/moc_socketsend_node.cxx.i
+.PHONY : include/guitest/moc_socketsend_node.i
+
+# target to preprocess a source file
+include/guitest/moc_socketsend_node.cxx.i:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.i
+.PHONY : include/guitest/moc_socketsend_node.cxx.i
+
+include/guitest/moc_socketsend_node.s: include/guitest/moc_socketsend_node.cxx.s
+.PHONY : include/guitest/moc_socketsend_node.s
+
+# target to generate assembly for a file
+include/guitest/moc_socketsend_node.cxx.s:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.s
+.PHONY : include/guitest/moc_socketsend_node.cxx.s
+
 qrc_images.o: qrc_images.cxx.o
 .PHONY : qrc_images.o
 
@@ -568,6 +592,30 @@ src/qnode.cpp.s:
 	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/qnode.cpp.s
 .PHONY : src/qnode.cpp.s
 
+src/socketsend_node.o: src/socketsend_node.cpp.o
+.PHONY : src/socketsend_node.o
+
+# target to build an object file
+src/socketsend_node.cpp.o:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o
+.PHONY : src/socketsend_node.cpp.o
+
+src/socketsend_node.i: src/socketsend_node.cpp.i
+.PHONY : src/socketsend_node.i
+
+# target to preprocess a source file
+src/socketsend_node.cpp.i:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.i
+.PHONY : src/socketsend_node.cpp.i
+
+src/socketsend_node.s: src/socketsend_node.cpp.s
+.PHONY : src/socketsend_node.s
+
+# target to generate assembly for a file
+src/socketsend_node.cpp.s:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.s
+.PHONY : src/socketsend_node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -606,6 +654,9 @@ help:
 	@echo "... include/guitest/moc_qnode.o"
 	@echo "... include/guitest/moc_qnode.i"
 	@echo "... include/guitest/moc_qnode.s"
+	@echo "... include/guitest/moc_socketsend_node.o"
+	@echo "... include/guitest/moc_socketsend_node.i"
+	@echo "... include/guitest/moc_socketsend_node.s"
 	@echo "... qrc_images.o"
 	@echo "... qrc_images.i"
 	@echo "... qrc_images.s"
@@ -621,6 +672,9 @@ help:
 	@echo "... src/qnode.o"
 	@echo "... src/qnode.i"
 	@echo "... src/qnode.s"
+	@echo "... src/socketsend_node.o"
+	@echo "... src/socketsend_node.i"
+	@echo "... src/socketsend_node.s"
 .PHONY : help
 
 

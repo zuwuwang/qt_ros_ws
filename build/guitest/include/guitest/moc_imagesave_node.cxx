@@ -22,24 +22,26 @@ static const uint qt_meta_data_guitest__ImageSaveNode[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       24,   23,   23,   23, 0x05,
-      42,   23,   23,   23, 0x05,
-      59,   23,   23,   23, 0x05,
+      45,   23,   23,   23, 0x05,
+      62,   23,   23,   23, 0x05,
+      75,   23,   23,   23, 0x05,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_guitest__ImageSaveNode[] = {
-    "guitest::ImageSaveNode\0\0saveCameraImage()\0"
-    "loggingUpdated()\0rosShutdown()\0"
+    "guitest::ImageSaveNode\0\0displayCameraImage()\0"
+    "loggingUpdated()\0socketSend()\0"
+    "rosShutdown()\0"
 };
 
 void guitest::ImageSaveNode::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -48,9 +50,10 @@ void guitest::ImageSaveNode::qt_static_metacall(QObject *_o, QMetaObject::Call _
         Q_ASSERT(staticMetaObject.cast(_o));
         ImageSaveNode *_t = static_cast<ImageSaveNode *>(_o);
         switch (_id) {
-        case 0: _t->saveCameraImage(); break;
+        case 0: _t->displayCameraImage(); break;
         case 1: _t->loggingUpdated(); break;
-        case 2: _t->rosShutdown(); break;
+        case 2: _t->socketSend(); break;
+        case 3: _t->rosShutdown(); break;
         default: ;
         }
     }
@@ -89,15 +92,15 @@ int guitest::ImageSaveNode::qt_metacall(QMetaObject::Call _c, int _id, void **_a
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
 
 // SIGNAL 0
-void guitest::ImageSaveNode::saveCameraImage()
+void guitest::ImageSaveNode::displayCameraImage()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
@@ -109,8 +112,14 @@ void guitest::ImageSaveNode::loggingUpdated()
 }
 
 // SIGNAL 2
-void guitest::ImageSaveNode::rosShutdown()
+void guitest::ImageSaveNode::socketSend()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, 0);
+}
+
+// SIGNAL 3
+void guitest::ImageSaveNode::rosShutdown()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -6,6 +6,7 @@
 -I/usr/include
 -I/usr/include/opencv
 -I/usr/include/qt4
+-I/usr/include/qt4/QtWebKit
 -I/usr/include/qt4/QtGui
 -I/usr/include/qt4/QtCore
 -I/home/nvidia/qt_ros_ws/build/guitest
@@ -13,6 +14,7 @@
 -DROS_PACKAGE_NAME="guitest"
 -DROSCONSOLE_BACKEND_LOG4CXX
 -D$<$<NOT:$<CONFIG:Debug>>:QT_NO_DEBUG>
+-DQT_WEBKIT_LIB
 -DQT_GUI_LIB
 -DQT_CORE_LIB
 -DQT_NO_KEYWORDS

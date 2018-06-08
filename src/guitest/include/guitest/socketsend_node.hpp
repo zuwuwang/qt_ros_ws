@@ -1,5 +1,5 @@
 /**
- * @file /include/guitest/ImageSaveNode.hpp
+ * @file /include/guitest/socketsendnode.hpp
  *
  * @brief Communications central!
  *
@@ -10,42 +10,59 @@
 /*****************************************************************************
 ** Ifdefs
 *****************************************************************************/
-#ifndef guitest_IMGSAVE_NODE_HPP_
-#define guitest_IMGSAVE_NODE_HPP_
+#ifndef guitest_SOCKETSENDNODE_HPP_
+#define guitest_SOCKETSENDNODE_HPP_
+
+#define HELLO_WORLD_SERVER_PORT  7754//36892
+#define SERVER_IP_ADDRESS "192.168.1.250"  // 地面工作站IP
+#define BUFFER_SIZE 1024
+
 
 /*****************************************************************************
 ** Includes
 *****************************************************************************/
-
+// from qnode
 #include <ros/ros.h>
-#include <string>
 #include <QThread>
 #include <QStringListModel>
-#include <image_transport/image_transport.h>
 
+//socket headfile
+#include <netinet/in.h>    // for sockaddr_in
+#include <sys/types.h>    // for socket
+#include <sys/socket.h>    // for socket
+#include <stdio.h>        // for qDebug
+#include <stdlib.h>        // for exit
+#include <string.h>        // for bzero
+#include <time.h>                //for time_t and time
+#include <arpa/inet.h>
+#include <unistd.h>    //close(client_socket);
+
+//opencv headfile
 #include <vector>
-#include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <cv_bridge/cv_bridge.h>
+#include <opencv2/imgproc/imgproc.hpp>
+
+// qt include
+#include <QDebug>
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
+using namespace std;
+using namespace cv;
 
 namespace guitest {
 
 /*****************************************************************************
 ** Class
 *****************************************************************************/
-
-class ImageSaveNode : public QThread {
+class SocketSendNode : public QThread {
     Q_OBJECT
 public:
-  ImageSaveNode(int argc, char** argv );
-  virtual ~ImageSaveNode();
+  SocketSendNode(int argc, char** argv );
+  virtual ~SocketSendNode();
   bool init();
   void run();
-  void captureTimerCallback(const ros::TimerEvent& e);
-  void imageTransCallback(const sensor_msgs::ImageConstPtr& msg);
+  void socketSendImage();   //Q_SIGNALS trigger, qobject::connect manaully in mainwindow::mainwindow()
   /*********************
   ** Logging
   **********************/
@@ -59,22 +76,26 @@ public:
 
   QStringListModel* loggingModel() { return &logging_model; }
   void log( const LogLevel &level, const std::string &msg);
-  bool saveImageFlag = true;
-    cv::Mat cameraImage;
 
 Q_SIGNALS:
-  void displayCameraImage();
   void loggingUpdated();
-  void socketSend();
-    void rosShutdown();
+  void rosShutdown();
+  void socketFailed();
+   void socketSend();
 
 private:
   int init_argc;
   char** init_argv;
-  image_transport::Subscriber cameraImage_subscriber;
+  struct sockaddr_in client_addr;
+  struct sockaddr_in server_addr;
+  int client_socket;
+  char buffer[BUFFER_SIZE];
+  cv::Mat s_img;  //img2Send
+  int length;
+  vector<uchar> encode_img;
     QStringListModel logging_model;
 };
 
-}  // namespace guitest
 
-#endif // guitest_IMGSAVE_NODE_HPP_
+} // namespace guitest
+#endif // guitest_SOCKETSENDNODE_HPP_

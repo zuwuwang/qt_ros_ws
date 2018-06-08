@@ -49,7 +49,7 @@ public:
     QListView *view_logging;
     QLabel *label_slammap;
     QLabel *label_cameraImg;
-    QLabel *label_webmap;
+    QWidget *widget_webmap;
     QMenuBar *menubar;
     QMenu *menu_File;
     QStatusBar *statusbar;
@@ -162,10 +162,10 @@ public:
 
         gridLayout_3->addWidget(label_cameraImg, 0, 1, 1, 1);
 
-        label_webmap = new QLabel(groupBox_display);
-        label_webmap->setObjectName(QString::fromUtf8("label_webmap"));
+        widget_webmap = new QWidget(groupBox_display);
+        widget_webmap->setObjectName(QString::fromUtf8("widget_webmap"));
 
-        gridLayout_3->addWidget(label_webmap, 1, 2, 1, 1);
+        gridLayout_3->addWidget(widget_webmap, 1, 2, 1, 1);
 
 
         hboxLayout->addWidget(frame_2);
@@ -420,7 +420,6 @@ public:
         groupBox_display->setTitle(QApplication::translate("MainWindowDesign", "                                                                                                    display area", 0, QApplication::UnicodeUTF8));
         label_slammap->setText(QApplication::translate("MainWindowDesign", "slamMap", 0, QApplication::UnicodeUTF8));
         label_cameraImg->setText(QApplication::translate("MainWindowDesign", "cameraImg", 0, QApplication::UnicodeUTF8));
-        label_webmap->setText(QApplication::translate("MainWindowDesign", "webMap", 0, QApplication::UnicodeUTF8));
         menu_File->setTitle(QApplication::translate("MainWindowDesign", "&App", 0, QApplication::UnicodeUTF8));
         dock_status->setWindowTitle(QApplication::translate("MainWindowDesign", "Command Panel", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("MainWindowDesign", "Ros Master", 0, QApplication::UnicodeUTF8));

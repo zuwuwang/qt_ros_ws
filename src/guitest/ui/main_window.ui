@@ -122,11 +122,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QLabel" name="label_webmap">
-          <property name="text">
-           <string>webMap</string>
-          </property>
-         </widget>
+         <widget class="QWidget" name="widget_webmap" native="true"/>
         </item>
        </layout>
       </widget>

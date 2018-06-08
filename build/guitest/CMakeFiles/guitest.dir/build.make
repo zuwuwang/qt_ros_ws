@@ -73,15 +73,44 @@ guitest/include/guitest/moc_imagesave_node.cxx: guitest/include/guitest/moc_imag
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating include/guitest/moc_imagesave_node.cxx"
 	cd /home/nvidia/qt_ros_ws/build/guitest/include/guitest && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_imagesave_node.cxx_parameters
 
+guitest/include/guitest/moc_socketsend_node.cxx: /home/nvidia/qt_ros_ws/src/guitest/include/guitest/socketsend_node.hpp
+guitest/include/guitest/moc_socketsend_node.cxx: guitest/include/guitest/moc_socketsend_node.cxx_parameters
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating include/guitest/moc_socketsend_node.cxx"
+	cd /home/nvidia/qt_ros_ws/build/guitest/include/guitest && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_socketsend_node.cxx_parameters
+
 guitest/include/guitest/moc_qnode.cxx: /home/nvidia/qt_ros_ws/src/guitest/include/guitest/qnode.hpp
 guitest/include/guitest/moc_qnode.cxx: guitest/include/guitest/moc_qnode.cxx_parameters
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating include/guitest/moc_qnode.cxx"
 	cd /home/nvidia/qt_ros_ws/build/guitest/include/guitest && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_qnode.cxx_parameters
 
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o: guitest/CMakeFiles/guitest.dir/flags.make
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o: /home/nvidia/qt_ros_ws/src/guitest/src/socketsend_node.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o"
+	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/src/socketsend_node.cpp.o -c /home/nvidia/qt_ros_ws/src/guitest/src/socketsend_node.cpp
+
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/guitest.dir/src/socketsend_node.cpp.i"
+	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nvidia/qt_ros_ws/src/guitest/src/socketsend_node.cpp > CMakeFiles/guitest.dir/src/socketsend_node.cpp.i
+
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/guitest.dir/src/socketsend_node.cpp.s"
+	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nvidia/qt_ros_ws/src/guitest/src/socketsend_node.cpp -o CMakeFiles/guitest.dir/src/socketsend_node.cpp.s
+
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.requires:
+.PHONY : guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.requires
+
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.provides: guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.requires
+	$(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.provides.build
+.PHONY : guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.provides
+
+guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.provides.build: guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o
+
 guitest/CMakeFiles/guitest.dir/src/main_window.cpp.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/src/main_window.cpp.o: /home/nvidia/qt_ros_ws/src/guitest/src/main_window.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/src/main_window.cpp.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/src/main_window.cpp.o -c /home/nvidia/qt_ros_ws/src/guitest/src/main_window.cpp
 
@@ -104,7 +133,7 @@ guitest/CMakeFiles/guitest.dir/src/main_window.cpp.o.provides.build: guitest/CMa
 
 guitest/CMakeFiles/guitest.dir/src/qnode.cpp.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/src/qnode.cpp.o: /home/nvidia/qt_ros_ws/src/guitest/src/qnode.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/src/qnode.cpp.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/src/qnode.cpp.o -c /home/nvidia/qt_ros_ws/src/guitest/src/qnode.cpp
 
@@ -127,7 +156,7 @@ guitest/CMakeFiles/guitest.dir/src/qnode.cpp.o.provides.build: guitest/CMakeFile
 
 guitest/CMakeFiles/guitest.dir/src/main.cpp.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/src/main.cpp.o: /home/nvidia/qt_ros_ws/src/guitest/src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/src/main.cpp.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/src/main.cpp.o -c /home/nvidia/qt_ros_ws/src/guitest/src/main.cpp
 
@@ -150,7 +179,7 @@ guitest/CMakeFiles/guitest.dir/src/main.cpp.o.provides.build: guitest/CMakeFiles
 
 guitest/CMakeFiles/guitest.dir/src/imagesave_node.cpp.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/src/imagesave_node.cpp.o: /home/nvidia/qt_ros_ws/src/guitest/src/imagesave_node.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/src/imagesave_node.cpp.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/src/imagesave_node.cpp.o -c /home/nvidia/qt_ros_ws/src/guitest/src/imagesave_node.cpp
 
@@ -173,7 +202,7 @@ guitest/CMakeFiles/guitest.dir/src/imagesave_node.cpp.o.provides.build: guitest/
 
 guitest/CMakeFiles/guitest.dir/qrc_images.cxx.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/qrc_images.cxx.o: guitest/qrc_images.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/qrc_images.cxx.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/qrc_images.cxx.o -c /home/nvidia/qt_ros_ws/build/guitest/qrc_images.cxx
 
@@ -196,7 +225,7 @@ guitest/CMakeFiles/guitest.dir/qrc_images.cxx.o.provides.build: guitest/CMakeFil
 
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o: guitest/include/guitest/moc_main_window.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o -c /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_main_window.cxx
 
@@ -219,7 +248,7 @@ guitest/CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o.provides.bu
 
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o: guitest/include/guitest/moc_imagesave_node.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o -c /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_imagesave_node.cxx
 
@@ -240,9 +269,32 @@ guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o.provides
 
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o.provides.build: guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o
 
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o: guitest/CMakeFiles/guitest.dir/flags.make
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o: guitest/include/guitest/moc_socketsend_node.cxx
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_15)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o"
+	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o -c /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_socketsend_node.cxx
+
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.i"
+	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_socketsend_node.cxx > CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.i
+
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.s"
+	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_socketsend_node.cxx -o CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.s
+
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.requires:
+.PHONY : guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.requires
+
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.provides: guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.requires
+	$(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.provides.build
+.PHONY : guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.provides
+
+guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.provides.build: guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o
+
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o: guitest/CMakeFiles/guitest.dir/flags.make
 guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o: guitest/include/guitest/moc_qnode.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/nvidia/qt_ros_ws/build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o"
 	cd /home/nvidia/qt_ros_ws/build/guitest && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o -c /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_qnode.cxx
 
@@ -265,6 +317,7 @@ guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o.provides.build: g
 
 # Object files for target guitest
 guitest_OBJECTS = \
+"CMakeFiles/guitest.dir/src/socketsend_node.cpp.o" \
 "CMakeFiles/guitest.dir/src/main_window.cpp.o" \
 "CMakeFiles/guitest.dir/src/qnode.cpp.o" \
 "CMakeFiles/guitest.dir/src/main.cpp.o" \
@@ -272,11 +325,13 @@ guitest_OBJECTS = \
 "CMakeFiles/guitest.dir/qrc_images.cxx.o" \
 "CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o" \
 "CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o" \
+"CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o" \
 "CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o"
 
 # External object files for target guitest
 guitest_EXTERNAL_OBJECTS =
 
+/home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/src/main_window.cpp.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/src/qnode.cpp.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/src/main.cpp.o
@@ -284,8 +339,10 @@ guitest_EXTERNAL_OBJECTS =
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/qrc_images.cxx.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o
+/home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: guitest/CMakeFiles/guitest.dir/build.make
+/home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: /usr/lib/x86_64-linux-gnu/libQtWebKit.so
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: /usr/lib/x86_64-linux-gnu/libQtGui.so
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: /usr/lib/x86_64-linux-gnu/libQtCore.so
 /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest: /opt/ros/indigo/lib/libcv_bridge.so
@@ -360,6 +417,7 @@ guitest_EXTERNAL_OBJECTS =
 guitest/CMakeFiles/guitest.dir/build: /home/nvidia/qt_ros_ws/devel/lib/guitest/guitest
 .PHONY : guitest/CMakeFiles/guitest.dir/build
 
+guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o.requires
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/src/main_window.cpp.o.requires
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/src/qnode.cpp.o.requires
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/src/main.cpp.o.requires
@@ -367,6 +425,7 @@ guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/src/imag
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/qrc_images.cxx.o.requires
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o.requires
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o.requires
+guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o.requires
 guitest/CMakeFiles/guitest.dir/requires: guitest/CMakeFiles/guitest.dir/include/guitest/moc_qnode.cxx.o.requires
 .PHONY : guitest/CMakeFiles/guitest.dir/requires
 
@@ -378,6 +437,7 @@ guitest/CMakeFiles/guitest.dir/depend: guitest/qrc_images.cxx
 guitest/CMakeFiles/guitest.dir/depend: guitest/ui_main_window.h
 guitest/CMakeFiles/guitest.dir/depend: guitest/include/guitest/moc_main_window.cxx
 guitest/CMakeFiles/guitest.dir/depend: guitest/include/guitest/moc_imagesave_node.cxx
+guitest/CMakeFiles/guitest.dir/depend: guitest/include/guitest/moc_socketsend_node.cxx
 guitest/CMakeFiles/guitest.dir/depend: guitest/include/guitest/moc_qnode.cxx
 	cd /home/nvidia/qt_ros_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/qt_ros_ws/src /home/nvidia/qt_ros_ws/src/guitest /home/nvidia/qt_ros_ws/build /home/nvidia/qt_ros_ws/build/guitest /home/nvidia/qt_ros_ws/build/guitest/CMakeFiles/guitest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : guitest/CMakeFiles/guitest.dir/depend

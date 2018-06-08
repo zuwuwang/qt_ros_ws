@@ -3,7 +3,9 @@
  *
  * @brief Communications central!
  *
- * @date February 2011
+ * @date june 2018
+ *
+ * @auth  wangZuWu
  **/
 /*****************************************************************************
 ** Ifdefs

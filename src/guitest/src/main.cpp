@@ -3,7 +3,9 @@
  *
  * @brief Qt based gui.
  *
- * @date November 2010
+ * @date june 2018
+ *
+ * @auth  wangZuWu
  **/
 /*****************************************************************************
 ** Includes

@@ -3,7 +3,9 @@
  *
  * @brief Implementation for the qt gui.
  *
- * @date February 2011
+ * @date june 2018
+ *
+ * @auth  wangZuWu
  **/
 /*****************************************************************************
 ** Includes
@@ -14,6 +16,8 @@
 #include <iostream>
 #include "../include/guitest/main_window.hpp"
 
+#include <QWebView>
+#include <QUrl>
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
@@ -30,23 +34,29 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	: QMainWindow(parent)
   , qnode(argc,argv)  //TODO HERE,ADD YOUR NODE INIT WITH PARAM
   , imagesavenode(argc,argv)
+  , socketsendnode(argc,argv)
 {
 	ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
     QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt())); // qApp is a global variable for the application
-
     ReadSettings();
 	setWindowIcon(QIcon(":/images/icon.png"));
     QObject::connect(&qnode, SIGNAL(rosShutdown()), this, SLOT(close()));
     QObject::connect(&imagesavenode,SIGNAL(rosShutdown()),this,SLOT(close()));
-	/*********************
+    QObject::connect(&socketsendnode,SIGNAL(rosShutdown()),this,SLOT(close()));
+
+  /*********************
   ** Logging & Camera image display
 	**********************/
 	ui.view_logging->setModel(qnode.loggingModel());
     QObject::connect(&qnode, SIGNAL(loggingUpdated()), this, SLOT(updateLoggingView()));
 
-  //TODO HERE,ADD YOUR FUNC
-    QObject::connect(&imagesavenode,SIGNAL(saveCameraImage()),this,SLOT(displayCameraImageLabel()));
-
+  /*********************
+  ** TODO HERE,ADD YOUR trigger FUNC
+  **********************/
+  // display in qt label
+    QObject::connect(&imagesavenode,SIGNAL(displayCameraImage()),this,SLOT(displayCameraImageLabel()));
+  // socket send img
+    QObject::connect (&socketsendnode,SIGNAL(socketSend()),this,SLOT(socketSendImage()));
 
     /*********************
     ** Auto Start
@@ -55,9 +65,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
         on_button_connect_clicked(true);
     }
     /*******
-     *  get slam map & load map
+     *  load webmap & get slam map & load map
      *************/
-
 }
 
 MainWindow::~MainWindow() {}
@@ -80,48 +89,55 @@ void MainWindow::showNoMasterMessage() {
 
 void MainWindow::on_button_connect_clicked(bool check )
 {
+  // check environment
   if ( ui.checkbox_use_environment->isChecked() )
   {
     if ( !qnode.init() )
     {
 			showNoMasterMessage();
     }
-
     else
     {
 			ui.button_connect->setEnabled(false);
 		}
   }
+  // qnode init
+  if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
+  {
+    showNoMasterMessage();
+  }
   else
   {
-    // qnode init function to start
-		if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
-    {
-			showNoMasterMessage();
-    }
-    else
-    {
-			ui.button_connect->setEnabled(false);
-			ui.line_edit_master->setReadOnly(true);
-			ui.line_edit_host->setReadOnly(true);
-			ui.line_edit_topic->setReadOnly(true);
-		}
+    ui.button_connect->setEnabled(false);
+    ui.line_edit_master->setReadOnly(true);
+    ui.line_edit_host->setReadOnly(true);
+    ui.line_edit_topic->setReadOnly(true);
+  }
 
-    //TODO,RUN YOUR NODE
-    if( ! imagesavenode.init() )
-    {
-      showNoMasterMessage();
-    }
-    else
-    {
-      // TODO here,display in label
-      //displayCameraImageLabel();
-      ROS_INFO(" run imageSaveNode ");
-    }
+  //TODO,RUN YOUR NODE
+  if( ! imagesavenode.init() )
+  {
+    showNoMasterMessage();
+  }
+  else
+  {
+    // TODO here,display in label
+    //displayCameraImageLabel();
+    ROS_INFO(" run imageSaveNode ");
+  }
+ // socketsendnode init
+  if( ! socketsendnode.init() )
+  {
+      // showSocketInitFaildMessage();
+  }
+  else
+  {
 
-	}
+  }
+ // speech node
+
+ // calPosition node
 }
-
 
 void MainWindow::on_checkbox_use_environment_stateChanged(int state) {
 	bool enabled;
@@ -170,10 +186,16 @@ void MainWindow::displayCameraImageLabel(){
   QImage cameraImageScaled;
   cameraImageScaled = idsImage.scaled(ui.label_cameraImg->size(),Qt::KeepAspectRatio);
   ui.label_cameraImg->setPixmap(QPixmap::fromImage(cameraImageScaled));
-  //ui.label_cameraImg->clear();
-  //ui.label_cameraImg->setPixmap(QPixmap::fromImage(idsImage));
-  //ui.label_cameraImg->resize(ui.label_cameraImg->pixmap()->size());
 }
+
+void MainWindow::socketSendImage(){
+  // TODO HERE, send img func todo here
+  //system("gnome-terminal  -x bash -c ' roscore '");
+
+}
+
+
+
 /*****************************************************************************
 ** Implementation [Menu]
 *****************************************************************************/
@@ -223,9 +245,12 @@ void MainWindow::closeEvent(QCloseEvent *event){
 	WriteSettings();
   // TODO
   // add your destory function
-  //cv::destroyWindow("show source wimage");
 	QMainWindow::closeEvent(event);
 }
+
+/*****************************************************************************
+** Implementation [ Add Your Button Response Here ]
+*****************************************************************************/
 
 void MainWindow::showButtonTestMessage(){
   QMessageBox msgBox;
@@ -233,14 +258,26 @@ void MainWindow::showButtonTestMessage(){
   msgBox.exec();
 }
 
-void MainWindow::on_button_test_clicked(bool checkrd){
+void MainWindow::on_button_test_clicked(bool checked){
   showButtonTestMessage();
 
 }
 
-void MainWindow::on_button_onestepSLAM_clicked(bool check){
+void MainWindow::on_button_onestepSLAM_clicked(bool checked){
   // all in one launch file
   //system("gnome-terminal -x bash -c 'source /home/ubuntu/turtlebot/devel/setup.bash;roslaunch turtlebot_bringup minimal.launch limited:=true'&");
 }
 
+void MainWindow::on_button_roscore_clicked(bool checked)
+{
+  //system("gnome-terminal -x bash -c 'source /home/nvidia/qt_ros_ws/devel/setup.bash;roscore limited:=true'&"); // this is run on TX2
+  //system("gnome-terminal  -x bash -c ' roscore '");  // this cmd is run on asus 14.04
+  QWebView webmap;
+ // webmap.load(QUrl("http://www.baidu.com"));
+  webmap.load(QUrl::fromLocalFile("file:///home/nvidia/qt_ros_ws/test.html"));
+  webmap.show();
+}
+
 }  // namespace guitest
+
+

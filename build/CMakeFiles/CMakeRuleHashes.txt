@@ -5,5 +5,6 @@
 61a74092637b756a79451a0811743445 guitest/include/guitest/moc_imgsave_node.cxx
 42fcb9a35b822e4f253e1d04ef14400b guitest/include/guitest/moc_main_window.cxx
 68f71aa49189e5ac2baaf365134ffb8a guitest/include/guitest/moc_qnode.cxx
+5c55ada996f77a4773edd4aaa7a0116b guitest/include/guitest/moc_socketsend_node.cxx
 ee3abc1aefaf645237c8688276cd828c guitest/qrc_images.cxx
 36479d36fa0fe547a55c57374ee68f00 guitest/ui_main_window.h

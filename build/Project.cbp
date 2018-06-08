@@ -405,6 +405,7 @@
             <Add option="-DROS_BUILD_SHARED_LIBS=1" />
             <Add option="-DROS_PACKAGE_NAME=&quot;guitest&quot;" />
             <Add option="-DROSCONSOLE_BACKEND_LOG4CXX" />
+            <Add option="-DQT_WEBKIT_LIB" />
             <Add option="-DQT_GUI_LIB" />
             <Add option="-DQT_CORE_LIB" />
             <Add option="-DQT_NO_KEYWORDS" />
@@ -417,6 +418,7 @@
             <Add directory="/usr/include/qt4" />
             <Add directory="/usr/include/qt4/QtCore" />
             <Add directory="/usr/include/qt4/QtGui" />
+            <Add directory="/usr/include/qt4/QtWebKit" />
             <Add directory="/usr/include/x86_64-linux-gnu" />
             <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
             <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
@@ -441,6 +443,7 @@
             <Add option="-DROS_BUILD_SHARED_LIBS=1" />
             <Add option="-DROS_PACKAGE_NAME=&quot;guitest&quot;" />
             <Add option="-DROSCONSOLE_BACKEND_LOG4CXX" />
+            <Add option="-DQT_WEBKIT_LIB" />
             <Add option="-DQT_GUI_LIB" />
             <Add option="-DQT_CORE_LIB" />
             <Add option="-DQT_NO_KEYWORDS" />
@@ -453,6 +456,7 @@
             <Add directory="/usr/include/qt4" />
             <Add directory="/usr/include/qt4/QtCore" />
             <Add directory="/usr/include/qt4/QtGui" />
+            <Add directory="/usr/include/qt4/QtWebKit" />
             <Add directory="/usr/include/x86_64-linux-gnu" />
             <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
             <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
@@ -475,6 +479,8 @@
       <Unit filename="/home/nvidia/qt_ros_ws/src/guitest/src/main_window.cpp">
       </Unit>
       <Unit filename="/home/nvidia/qt_ros_ws/src/guitest/src/qnode.cpp">
+      </Unit>
+      <Unit filename="/home/nvidia/qt_ros_ws/src/guitest/src/socketsend_node.cpp">
       </Unit>
       <Unit filename="/usr/src/gtest/src/gtest-all.cc">
       </Unit>

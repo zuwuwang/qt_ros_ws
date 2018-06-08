@@ -3,7 +3,9 @@
  *
  * @brief Ros communication central!
  *
- * @date February 2011
+ * @date june 2018
+ *
+ * @auth  wangZuWu
  **/
 
 /*****************************************************************************
@@ -57,6 +59,9 @@ bool ImageSaveNode::init() {
   if ( ! ros::master::check() ) {
     return false;
   }
+  // CHECK CAMERA NODE
+  // TODO
+
   ros::start(); // explicitly needed since our nodehandle is going out of scope.
   ros::NodeHandle n;
  // cv::namedWindow("show source image");
@@ -64,7 +69,7 @@ bool ImageSaveNode::init() {
   // Add your ros communications here.
   image_transport::ImageTransport transport(n);
   cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this);
-  start();
+  start(); // Match with run() function
   return true;
 }
 
@@ -72,10 +77,10 @@ bool ImageSaveNode::init() {
 void ImageSaveNode::run() {
   ros::NodeHandle n;
   //ros timer
-  ros::Timer captureTimer = n.createTimer(ros::Duration(2),&ImageSaveNode::captureTimerCallback,this);
+  ros::Timer captureTimer = n.createTimer(ros::Duration(4),&ImageSaveNode::captureTimerCallback,this);
   // ros img to opencv img
   image_transport::ImageTransport transport(n);
-  cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this);
+  cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this); // TX2 different
   ros::spin();
 
   std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
@@ -84,7 +89,6 @@ void ImageSaveNode::run() {
 
 void ImageSaveNode::captureTimerCallback(const ros::TimerEvent& e){
   saveImageFlag = true;
-  //sleep(60); // erery 60 second save
   ROS_INFO(" T ");
 }
 
@@ -114,7 +118,8 @@ void ImageSaveNode::imageTransCallback(const sensor_msgs::ImageConstPtr& msg){
 
           cv::imwrite(filePath,cameraImage);
 
-          Q_EMIT saveCameraImage();  // chufa signal , to run slot func
+          Q_EMIT displayCameraImage();  // trigger signal , to run slot func: display in qt label
+          Q_EMIT socketSend();  // trigger socket send
 
        }
         catch (cv_bridge::Exception& e)
