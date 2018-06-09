@@ -43,9 +43,7 @@ bool SocketSendNode::init() {
 
   qDebug("start  init socket ...");
      //get server ip addr
-
   qDebug("ServerIPAddress %s\n",SERVER_IP_ADDRESS);
-   log(Info,std::string("ServerIPAddress "));
   bzero(&client_addr,sizeof(client_addr)); //把一段内存区的内容全部设置为0
   client_addr.sin_family = AF_INET;    //internet协议族
   client_addr.sin_addr.s_addr = htons(INADDR_ANY);//INADDR_ANY表示自动获取本机地址
@@ -54,8 +52,7 @@ bool SocketSendNode::init() {
   if( client_socket < 0)
          {
              qDebug("Create Socket Failed!\n");
-               return false;
-               exit(1);
+             return false;
          }
    /******
     * bind port
@@ -79,8 +76,7 @@ bool SocketSendNode::init() {
    if(::connect(client_socket,(struct sockaddr*)&server_addr, server_addr_length) < 0)
       {
           qDebug("Can Not Connect To %s!\n",SERVER_IP_ADDRESS);
-          Q_EMIT socketSendFailed();
-          exit(1);
+          return false;
       }
   qDebug("success connect To %s!\n",SERVER_IP_ADDRESS);
 

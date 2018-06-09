@@ -66,12 +66,12 @@ public:
     QLabel *label_3;
     QLabel *label_2;
     QLineEdit *line_edit_master;
+    QLabel *label;
+    QLineEdit *line_edit_host;
     QHBoxLayout *horizontalLayout_5;
     QPushButton *button_roscore;
     QPushButton *button_openCam;
     QPushButton *button_connect;
-    QLabel *label;
-    QLineEdit *line_edit_host;
     QGroupBox *groupBox_2;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
@@ -86,12 +86,19 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *button_speechListen;
     QPushButton *button_positionCal;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_8;
+    QHBoxLayout *horizontalLayout_9;
+    QLineEdit *line_edit_pointA;
+    QPushButton *button_setA;
+    QLineEdit *line_edit_pointB;
+    QPushButton *button_setB;
+    QPushButton *button_navigation;
     QGroupBox *groupBox_3;
     QWidget *horizontalLayoutWidget_3;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_4;
     QLineEdit *line_edit_mcnn;
-    QPushButton *button_test;
     QPushButton *quit_button;
 
     void setupUi(QMainWindow *MainWindowDesign)
@@ -198,6 +205,7 @@ public:
         frame->setObjectName(QString::fromUtf8("frame"));
         sizePolicy2.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
         frame->setSizePolicy(sizePolicy2);
+        frame->setMinimumSize(QSize(300, 0));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         verticalLayout_3 = new QVBoxLayout(frame);
@@ -246,6 +254,19 @@ public:
 
         gridLayout->addWidget(line_edit_master, 1, 0, 1, 2);
 
+        label = new QLabel(groupBox);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setMaximumSize(QSize(16777215, 23));
+        label->setFrameShape(QFrame::StyledPanel);
+        label->setFrameShadow(QFrame::Raised);
+
+        gridLayout->addWidget(label, 0, 0, 1, 1);
+
+        line_edit_host = new QLineEdit(groupBox);
+        line_edit_host->setObjectName(QString::fromUtf8("line_edit_host"));
+
+        gridLayout->addWidget(line_edit_host, 3, 0, 1, 2);
+
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         button_roscore = new QPushButton(groupBox);
@@ -270,19 +291,6 @@ public:
 
 
         gridLayout->addLayout(horizontalLayout_5, 9, 0, 1, 2);
-
-        label = new QLabel(groupBox);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMaximumSize(QSize(16777215, 23));
-        label->setFrameShape(QFrame::StyledPanel);
-        label->setFrameShadow(QFrame::Raised);
-
-        gridLayout->addWidget(label, 0, 0, 1, 1);
-
-        line_edit_host = new QLineEdit(groupBox);
-        line_edit_host->setObjectName(QString::fromUtf8("line_edit_host"));
-
-        gridLayout->addWidget(line_edit_host, 3, 0, 1, 2);
 
 
         verticalLayout_3->addWidget(groupBox);
@@ -348,8 +356,57 @@ public:
 
         horizontalLayout_4->addWidget(button_positionCal);
 
+        horizontalLayoutWidget_4->raise();
 
         verticalLayout_3->addWidget(groupBox_4);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        line_edit_pointA = new QLineEdit(frame);
+        line_edit_pointA->setObjectName(QString::fromUtf8("line_edit_pointA"));
+
+        horizontalLayout_9->addWidget(line_edit_pointA);
+
+        button_setA = new QPushButton(frame);
+        button_setA->setObjectName(QString::fromUtf8("button_setA"));
+        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(button_setA->sizePolicy().hasHeightForWidth());
+        button_setA->setSizePolicy(sizePolicy3);
+        button_setA->setMaximumSize(QSize(35, 16777215));
+
+        horizontalLayout_9->addWidget(button_setA);
+
+        line_edit_pointB = new QLineEdit(frame);
+        line_edit_pointB->setObjectName(QString::fromUtf8("line_edit_pointB"));
+
+        horizontalLayout_9->addWidget(line_edit_pointB);
+
+        button_setB = new QPushButton(frame);
+        button_setB->setObjectName(QString::fromUtf8("button_setB"));
+        button_setB->setMaximumSize(QSize(35, 16777215));
+
+        horizontalLayout_9->addWidget(button_setB);
+
+
+        horizontalLayout_8->addLayout(horizontalLayout_9);
+
+        button_navigation = new QPushButton(frame);
+        button_navigation->setObjectName(QString::fromUtf8("button_navigation"));
+        button_navigation->setMaximumSize(QSize(65, 16777215));
+
+        horizontalLayout_8->addWidget(button_navigation);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_8);
+
+
+        verticalLayout_3->addLayout(verticalLayout_4);
 
         groupBox_3 = new QGroupBox(frame);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
@@ -373,21 +430,16 @@ public:
 
         verticalLayout_3->addWidget(groupBox_3);
 
-        button_test = new QPushButton(frame);
-        button_test->setObjectName(QString::fromUtf8("button_test"));
-
-        verticalLayout_3->addWidget(button_test);
-
 
         verticalLayout->addWidget(frame);
 
         quit_button = new QPushButton(dockWidgetContents_2);
         quit_button->setObjectName(QString::fromUtf8("quit_button"));
-        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(quit_button->sizePolicy().hasHeightForWidth());
-        quit_button->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(quit_button->sizePolicy().hasHeightForWidth());
+        quit_button->setSizePolicy(sizePolicy4);
 
         verticalLayout->addWidget(quit_button);
 
@@ -429,6 +481,8 @@ public:
         label_3->setText(QApplication::translate("MainWindowDesign", "Ros Hostname", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindowDesign", "Ros IP", 0, QApplication::UnicodeUTF8));
         line_edit_master->setText(QApplication::translate("MainWindowDesign", "http://192.168.1.2:11311/", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("MainWindowDesign", "Ros Master Url", 0, QApplication::UnicodeUTF8));
+        line_edit_host->setText(QApplication::translate("MainWindowDesign", "192.168.1.67", 0, QApplication::UnicodeUTF8));
         button_roscore->setText(QApplication::translate("MainWindowDesign", "roscore", 0, QApplication::UnicodeUTF8));
         button_openCam->setText(QApplication::translate("MainWindowDesign", "openCam", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
@@ -438,8 +492,6 @@ public:
         button_connect->setStatusTip(QApplication::translate("MainWindowDesign", "Clear all waypoints and set the target to the current joint trajectory state.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_STATUSTIP
         button_connect->setText(QApplication::translate("MainWindowDesign", "connect", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("MainWindowDesign", "Ros Master Url", 0, QApplication::UnicodeUTF8));
-        line_edit_host->setText(QApplication::translate("MainWindowDesign", "192.168.1.67", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("MainWindowDesign", "Run Laser SLAM", 0, QApplication::UnicodeUTF8));
         button_onestep->setText(QApplication::translate("MainWindowDesign", "onestepSLAM", 0, QApplication::UnicodeUTF8));
         button_saveMap->setText(QApplication::translate("MainWindowDesign", "saveMap", 0, QApplication::UnicodeUTF8));
@@ -448,9 +500,11 @@ public:
         groupBox_4->setTitle(QApplication::translate("MainWindowDesign", "SpeechAssistance", 0, QApplication::UnicodeUTF8));
         button_speechListen->setText(QApplication::translate("MainWindowDesign", "speechListen", 0, QApplication::UnicodeUTF8));
         button_positionCal->setText(QApplication::translate("MainWindowDesign", "positionCal", 0, QApplication::UnicodeUTF8));
+        button_setA->setText(QApplication::translate("MainWindowDesign", "setA", 0, QApplication::UnicodeUTF8));
+        button_setB->setText(QApplication::translate("MainWindowDesign", "setB", 0, QApplication::UnicodeUTF8));
+        button_navigation->setText(QApplication::translate("MainWindowDesign", "nav", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("MainWindowDesign", "Get Resault", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("MainWindowDesign", "peopleNumber:", 0, QApplication::UnicodeUTF8));
-        button_test->setText(QApplication::translate("MainWindowDesign", "buttton_test", 0, QApplication::UnicodeUTF8));
         quit_button->setText(QApplication::translate("MainWindowDesign", "Quit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

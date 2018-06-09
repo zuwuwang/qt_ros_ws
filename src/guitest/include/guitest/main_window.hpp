@@ -46,8 +46,9 @@ public:
 	void WriteSettings(); // Save qt program settings when closing
 
 	void closeEvent(QCloseEvent *event); // Overloaded function
-	void showNoMasterMessage();
-  void showButtonTestMessage();
+
+  void showNoMasterMessage();
+  void showSocketInitFailedMessage();
 
 
 public Q_SLOTS:
@@ -58,7 +59,6 @@ public Q_SLOTS:
 	void on_button_connect_clicked(bool check );
 	void on_checkbox_use_environment_stateChanged(int state);
   // TODO HERE,ADD YOUR BUTTON
-  void on_button_test_clicked(bool checked );
   void on_button_roscore_clicked(bool checked );
   void on_button_onestepSLAM_clicked(bool checked );
   void on_button_openCam_clicked(bool checked );
@@ -77,7 +77,6 @@ private:
   //TODO HERE ,INSTANTIATION YOUR NODE TO USE IN MAINWINDOW
   ImageSaveNode imagesavenode;
   SocketSendNode socketsendnode;
-
 };
 
 }  // namespace guitest

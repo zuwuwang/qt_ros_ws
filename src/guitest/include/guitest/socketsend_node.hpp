@@ -14,7 +14,7 @@
 #define guitest_SOCKETSENDNODE_HPP_
 
 #define HELLO_WORLD_SERVER_PORT  37677
-#define SERVER_IP_ADDRESS "112.74.89.58"  // 地面工作站IP
+#define SERVER_IP_ADDRESS "112.74.89.57"  // 地面工作站IP
 #define BUFFER_SIZE 1024
 
 
@@ -68,7 +68,7 @@ public:
   void socketSendImage(const sensor_msgs::ImageConstPtr& msg);
   bool socketSendFlag = true;
   cv::Mat socket2Send;
-  char* peopleNum = "456" ;
+  char* peopleNum = "456" ; //init
 
   /*********************
   ** Logging
@@ -88,7 +88,6 @@ Q_SIGNALS:
   void loggingUpdated();
   void rosShutdown();
   void socketSend();
-    void socketSendFailed();
     void mcnnResault();
 
 private:

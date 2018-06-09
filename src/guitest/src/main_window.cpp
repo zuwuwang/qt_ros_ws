@@ -49,13 +49,13 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	**********************/
 	ui.view_logging->setModel(qnode.loggingModel());
     QObject::connect(&qnode, SIGNAL(loggingUpdated()), this, SLOT(updateLoggingView()));
-
   /*********************
   ** TODO HERE,ADD YOUR trigger FUNC
   **********************/
+  // init
+
   // display in ui
     QObject::connect(&imagesavenode,SIGNAL(displayCameraImage()),this,SLOT(displayCameraImageLabel()));
-    QObject::connect(&socketsendnode,SIGNAL(mcnnResault()),this,SLOT(mcnnResaultShow()));
 
     /*********************
     ** Auto Start
@@ -76,11 +76,18 @@ MainWindow::~MainWindow() {}
 
 void MainWindow::showNoMasterMessage() {
 	QMessageBox msgBox;
-	msgBox.setText("Couldn't find the ros master.");
+  msgBox.setText("Couldn't find the ros master,please run commond 'roscor'.");
 	msgBox.exec();
     close();
 }
 
+void MainWindow::showSocketInitFailedMessage()
+{
+  QMessageBox msgBox;
+  msgBox.setText(" Connect server failed, please try again.");
+  msgBox.exec();
+    close();
+}
 /*
  * These triggers whenever the button is clicked, regardless of whether it
  * is already checked or not.
@@ -103,10 +110,11 @@ void MainWindow::on_button_connect_clicked(bool check )
   // qnode init
   if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
   {
-    showNoMasterMessage();
+    showSocketInitFailedMessage();
   }
   else
   {
+
     ui.button_connect->setEnabled(false);
     ui.line_edit_master->setReadOnly(true);
     ui.line_edit_host->setReadOnly(true);
@@ -120,19 +128,18 @@ void MainWindow::on_button_connect_clicked(bool check )
   }
   else
   {
-    // TODO here,display in label
-    //displayCameraImageLabel();
     ROS_INFO(" run imageSaveNode ");
   }
  // socketsendnode init
   if( ! socketsendnode.init() )
   {
-      // showSocketInitFaildMessage();
+       showSocketInitFailedMessage();
   }
   else
   {
 
   }
+
  // speech node
 
  // calPosition node
@@ -258,16 +265,6 @@ void MainWindow::closeEvent(QCloseEvent *event){
 /*****************************************************************************
 ** Implementation [ Add Your Button Response Here ]
 *****************************************************************************/
-
-void MainWindow::showButtonTestMessage(){
-  QMessageBox msgBox;
-  msgBox.setText(" button test ... ");
-  msgBox.exec();
-}
-
-void MainWindow::on_button_test_clicked(bool checked){
-  showButtonTestMessage();
-}
 
 void MainWindow::on_button_onestepSLAM_clicked(bool checked){
   // all in one launch file
