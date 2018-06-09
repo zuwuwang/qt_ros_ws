@@ -25,6 +25,7 @@
 #include <ros/ros.h>
 #include <QThread>
 #include <QStringListModel>
+#include <image_transport/image_transport.h>
 
 //socket headfile
 #include <netinet/in.h>    // for sockaddr_in
@@ -41,6 +42,7 @@
 #include <vector>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <cv_bridge/cv_bridge.h>
 
 // qt include
 #include <QDebug>
@@ -63,7 +65,9 @@ public:
   virtual ~SocketSendNode();
   bool init();
   void run();
-  void socketSendImage();   //Q_SIGNALS trigger, qobject::connect manaully in mainwindow::mainwindow()
+  void socketSendImage(const sensor_msgs::ImageConstPtr& msg);
+  bool socketSendFlag = true;
+  cv::Mat socket2Send;
   /*********************
   ** Logging
   **********************/
@@ -93,6 +97,7 @@ private:
   char buffer[BUFFER_SIZE];
   int length;
   vector<uchar> encode_img;
+  image_transport::Subscriber socketSend_subscriber;
     QStringListModel logging_model;
 };
 

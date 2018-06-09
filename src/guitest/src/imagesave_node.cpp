@@ -64,7 +64,6 @@ bool ImageSaveNode::init() {
 
   ros::start(); // explicitly needed since our nodehandle is going out of scope.
   ros::NodeHandle n;
- // cv::namedWindow("show source image");
   cv::startWindowThread();
   // Add your ros communications here.
   image_transport::ImageTransport transport(n);
@@ -77,10 +76,11 @@ bool ImageSaveNode::init() {
 void ImageSaveNode::run() {
   ros::NodeHandle n;
   //ros timer
-  ros::Timer captureTimer = n.createTimer(ros::Duration(1),&ImageSaveNode::captureTimerCallback,this);
+  ros::Timer captureTimer = n.createTimer(ros::Duration(5),&ImageSaveNode::captureTimerCallback,this);
   // ros img to opencv img
   image_transport::ImageTransport transport(n);
   cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this); // TX2 different
+  saveImageFlag = true;
   ros::spin();
 
   std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
@@ -89,7 +89,6 @@ void ImageSaveNode::run() {
 
 void ImageSaveNode::captureTimerCallback(const ros::TimerEvent& e){
   saveImageFlag = true;
-  ROS_INFO(" T ");
 }
 
 void ImageSaveNode::imageTransCallback(const sensor_msgs::ImageConstPtr& msg){
@@ -102,19 +101,16 @@ void ImageSaveNode::imageTransCallback(const sensor_msgs::ImageConstPtr& msg){
           ROS_INFO("F");
           //get img & show,transfer ros img to cv img
           cameraImage = cv_bridge::toCvShare(msg, "bgr8")->image;
-          //cv::imshow("show source image", cameraImage);
-          //imgsave
-          char key;
-          key = cv::waitKey(33);
-
           struct tm* fileTime;
           char filePath[100] = {0};
           char fileName[100] = {0};
           time_t t;
           t = time(NULL);
           fileTime = localtime(&t);
-          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image/%Y%m%d_%H%M%S.jpg",fileTime);
-          strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
+         // strftime(filePath,100,"/home/nvidia/qt_ros_ws/image/%Y%m%d_%H%M%S.jpg",fileTime);
+         // strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
+          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image/%H%M%S.jpg",fileTime);
+          strftime(fileName,100,"%H%M%S.jpg",fileTime);
 
           cv::imwrite(filePath,cameraImage);
           Q_EMIT displayCameraImage();  // trigger signal , to run slot func: display in qt label

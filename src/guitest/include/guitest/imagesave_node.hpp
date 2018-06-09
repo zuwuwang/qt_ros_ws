@@ -46,6 +46,7 @@ public:
   void run();
   void captureTimerCallback(const ros::TimerEvent& e);
   void imageTransCallback(const sensor_msgs::ImageConstPtr& msg);
+  bool saveImageFlag = true;
   /*********************
   ** Logging
   **********************/
@@ -59,7 +60,6 @@ public:
 
   QStringListModel* loggingModel() { return &logging_model; }
   void log( const LogLevel &level, const std::string &msg);
-  bool saveImageFlag = true;
     cv::Mat cameraImage;
 
 Q_SIGNALS:

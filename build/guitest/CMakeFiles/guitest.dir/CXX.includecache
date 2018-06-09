@@ -75,6 +75,8 @@ QThread
 -
 QStringListModel
 -
+image_transport/image_transport.h
+-
 netinet/in.h
 -
 sys/types.h
@@ -98,6 +100,8 @@ vector
 opencv2/highgui/highgui.hpp
 -
 opencv2/imgproc/imgproc.hpp
+-
+cv_bridge/cv_bridge.h
 -
 QDebug
 -

@@ -7,7 +7,6 @@
 #include <QStringListModel>
 #include "../include/guitest/socketsend_node.hpp"
 
-
 /*****************************************************************************
 ** Namespaces
 *****************************************************************************/
@@ -39,6 +38,9 @@ bool SocketSendNode::init() {
   ros::start(); // explicitly needed since our nodehandle is going out of scope.
   ros::NodeHandle n;
   // Add your ros communications here. Socket Init Here, Connect Socket
+  image_transport::ImageTransport transport_socket(n);
+  socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+
   qDebug("start  init socket ...");
      //get server ip addr
 
@@ -88,20 +90,63 @@ bool SocketSendNode::init() {
 
 void SocketSendNode::run() {
   ros::NodeHandle n;
-  ros::Rate loop(1); // HZ
-  while(ros::ok())
+  ros::Rate loop_rate(0.2);
+  while( ros::ok() )
   {
-    // socket send
-      // trogger mode
-        Q_EMIT socketSend();  // trigger socket send
-      // timer mode
-        // img2send
-    loop.sleep();
+    // ros img to opencv img
+    image_transport::ImageTransport transport_socket(n);
+    socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+    socketSendFlag = true;
+    ros::spinOnce();
+    loop_rate.sleep();
   }
   std::cout << "Ros shutdown, proceeding to close the gui." << std::endl;
   Q_EMIT rosShutdown(); // used to signal the gui for a shutdown (useful to roslaunch)
 }
 
+void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
+  if(socketSendFlag)
+    {
+      try
+      {
+          // set imgSaveFlag
+          socketSendFlag = false;
+          ROS_INFO("F");
+          //get img & show,transfer ros img to cv img
+          socket2Send = cv_bridge::toCvShare(msg, "bgr8")->image;
+          struct tm* fileTime;
+          char filePath[100] ;
+          char fileName[100] ;
+          time_t t;
+          t = time(NULL);
+          fileTime = localtime(&t);
+         // strftime(filePath,100,"/home/nvidia/qt_ros_ws/imag3/%Y%m%d_%H%M%S.jpg",fileTime);
+         // strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
+          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image3/%H%M%S.jpg",fileTime);
+          strftime(fileName,100,"%H%M%S.jpg",fileTime);
+
+          cv::imwrite(filePath,socket2Send);
+          // TODO, socket send
+          vector<uchar> socket2SendEncode;
+          cv::imencode(".jpg",socket2Send,socket2SendEncode);
+          int socket2SendEncodeSize = socket2SendEncode.size();
+          uchar* socketSendBuffer = new uchar[socket2SendEncodeSize];
+          copy(socket2SendEncode.begin(),socket2SendEncode.end(),socketSendBuffer);
+
+          int toSendSize = socket2SendEncodeSize, receive = 0, finished = 0;
+          char char_len[10];
+
+          send(client_socket,fileName,30,0);
+
+
+
+       }
+        catch (cv_bridge::Exception& e)
+        {
+          ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
+        }
+      }
+}
 
 void SocketSendNode::log( const LogLevel &level, const std::string &msg) {
   logging_model.insertRows(logging_model.rowCount(),1);

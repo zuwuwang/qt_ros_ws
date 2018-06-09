@@ -662,6 +662,16 @@ guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o
  /home/nvidia/qt_ros_ws/src/guitest/include/guitest/socketsend_node.hpp
  /opt/ros/indigo/include/XmlRpcDecl.h
  /opt/ros/indigo/include/XmlRpcValue.h
+ /opt/ros/indigo/include/cv_bridge/cv_bridge.h
+ /opt/ros/indigo/include/image_transport/camera_publisher.h
+ /opt/ros/indigo/include/image_transport/camera_subscriber.h
+ /opt/ros/indigo/include/image_transport/exception.h
+ /opt/ros/indigo/include/image_transport/image_transport.h
+ /opt/ros/indigo/include/image_transport/loader_fwds.h
+ /opt/ros/indigo/include/image_transport/publisher.h
+ /opt/ros/indigo/include/image_transport/single_subscriber_publisher.h
+ /opt/ros/indigo/include/image_transport/subscriber.h
+ /opt/ros/indigo/include/image_transport/transport_hints.h
  /opt/ros/indigo/include/ros/advertise_options.h
  /opt/ros/indigo/include/ros/advertise_service_options.h
  /opt/ros/indigo/include/ros/assert.h
@@ -680,6 +690,7 @@ guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o
  /opt/ros/indigo/include/ros/message.h
  /opt/ros/indigo/include/ros/message_event.h
  /opt/ros/indigo/include/ros/message_forward.h
+ /opt/ros/indigo/include/ros/message_operations.h
  /opt/ros/indigo/include/ros/message_traits.h
  /opt/ros/indigo/include/ros/names.h
  /opt/ros/indigo/include/ros/node_handle.h
@@ -715,6 +726,12 @@ guitest/CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o
  /opt/ros/indigo/include/ros/wall_timer.h
  /opt/ros/indigo/include/ros/wall_timer_options.h
  /opt/ros/indigo/include/rosconsole/macros_generated.h
+ /opt/ros/indigo/include/sensor_msgs/CameraInfo.h
+ /opt/ros/indigo/include/sensor_msgs/CompressedImage.h
+ /opt/ros/indigo/include/sensor_msgs/Image.h
+ /opt/ros/indigo/include/sensor_msgs/RegionOfInterest.h
+ /opt/ros/indigo/include/sensor_msgs/image_encodings.h
+ /opt/ros/indigo/include/std_msgs/Header.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDebug
@@ -2328,6 +2345,16 @@ guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o
  /home/nvidia/qt_ros_ws/src/guitest/src/socketsend_node.cpp
  /opt/ros/indigo/include/XmlRpcDecl.h
  /opt/ros/indigo/include/XmlRpcValue.h
+ /opt/ros/indigo/include/cv_bridge/cv_bridge.h
+ /opt/ros/indigo/include/image_transport/camera_publisher.h
+ /opt/ros/indigo/include/image_transport/camera_subscriber.h
+ /opt/ros/indigo/include/image_transport/exception.h
+ /opt/ros/indigo/include/image_transport/image_transport.h
+ /opt/ros/indigo/include/image_transport/loader_fwds.h
+ /opt/ros/indigo/include/image_transport/publisher.h
+ /opt/ros/indigo/include/image_transport/single_subscriber_publisher.h
+ /opt/ros/indigo/include/image_transport/subscriber.h
+ /opt/ros/indigo/include/image_transport/transport_hints.h
  /opt/ros/indigo/include/ros/advertise_options.h
  /opt/ros/indigo/include/ros/advertise_service_options.h
  /opt/ros/indigo/include/ros/assert.h
@@ -2383,6 +2410,12 @@ guitest/CMakeFiles/guitest.dir/src/socketsend_node.cpp.o
  /opt/ros/indigo/include/ros/wall_timer.h
  /opt/ros/indigo/include/ros/wall_timer_options.h
  /opt/ros/indigo/include/rosconsole/macros_generated.h
+ /opt/ros/indigo/include/sensor_msgs/CameraInfo.h
+ /opt/ros/indigo/include/sensor_msgs/CompressedImage.h
+ /opt/ros/indigo/include/sensor_msgs/Image.h
+ /opt/ros/indigo/include/sensor_msgs/RegionOfInterest.h
+ /opt/ros/indigo/include/sensor_msgs/image_encodings.h
+ /opt/ros/indigo/include/std_msgs/Header.h
  /opt/ros/indigo/include/std_msgs/String.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h

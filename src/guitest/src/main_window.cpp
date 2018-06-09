@@ -55,8 +55,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   **********************/
   // display in qt label
     QObject::connect(&imagesavenode,SIGNAL(displayCameraImage()),this,SLOT(displayCameraImageLabel()));
-  // socket send img
-    QObject::connect (&socketsendnode,SIGNAL(socketSend()),this,SLOT(socketSendImage()));
+
 
     /*********************
     ** Auto Start
@@ -94,12 +93,12 @@ void MainWindow::on_button_connect_clicked(bool check )
 //  {
 //    if ( !qnode.init() )
 //    {
-//			showNoMasterMessage();
+//      showNoMasterMessage();
 //    }
 //    else
 //    {
-//			ui.button_connect->setEnabled(false);
-//		}
+//      ui.button_connect->setEnabled(false);
+//    }
 //  }
 //  // qnode init
 //  if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
@@ -182,8 +181,8 @@ void MainWindow::displayCameraImageLabel(){
   time_t t;
   t = time(NULL);
   fileTime = localtime(&t);
-  strftime(filePath,100,"/home/nvidia/qt_ros_ws/image2/%Y%m%d_%H%M%S.jpg",fileTime);
-  strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
+  strftime(filePath,100,"/home/nvidia/qt_ros_ws/image2/%H%M%S.jpg",fileTime);
+  strftime(fileName,100,"%H%M%S.jpg",fileTime);
 
   cv::Mat img2display = imagesavenode.cameraImage;
   cv::imwrite(filePath,img2display);
@@ -195,71 +194,6 @@ void MainWindow::displayCameraImageLabel(){
   cameraImageScaled = idsImage.scaled(ui.label_cameraImg->size(),Qt::KeepAspectRatio);
   ui.label_cameraImg->setPixmap(QPixmap::fromImage(cameraImageScaled));
 }
-
-void MainWindow::socketSendImage(){
-  // TODO HERE, send img func todo here
-  // Test
-  //system("gnome-terminal  -x bash -c ' roscore '");
-//  cv::Mat s_img = imagesavenode.cameraImage;
-//  imshow("s_img",s_img);
-//  vector<uchar> encode_img;
-//  imencode(".jpg", s_img, encode_img);
-//  int encode_img_size=encode_img.size();
-//     int s_img_size=s_img.rows*s_img.cols*3;
-//     qDebug("filesize is %d,width*hight*3 is %d\n",encode_img_size,s_img_size);
-
-//     uchar* send_buffer=new uchar[encode_img.size()];
-//     copy(encode_img.begin(),encode_img.end(),send_buffer);
-
-//     //2.send file_name
-//     int toSend=encode_img_size, receive  = 0, finished = 0;
-//     QString photoName;
-//     char* file_name;
-//     char char_len[10];
-//     photoName=QString("1.jpg");
-//     file_name=photoName.toLatin1().data();
-//     // file_name,qDebug file_name be empty
-//     //qDebug("file name is %s\n",file_name);
-//     bzero(buffer,BUFFER_SIZE);
-//     int send_flag=send(client_socket, file_name, 10, 0);
-//     if(!send_flag)
-//       {
-//         qDebug(" send file_name failed\n ");
-//         exit(1);
-//       }
-//     qDebug("success send file_name \n");
-//     //3.send image length
-//     sprintf(char_len, "%d", toSend);
-//     send(client_socket, char_len, 10, 0);//hello world!!hei hei(xiao)!!  strlen(char_len)这里要写一个固定长度，然后让服务器端读出一个固定长度，否则会出错
-//     qDebug("char_len is %s\n",char_len);
-
-//     // send test
-
-//     //4.send image data
-//     while(toSend  >  0)
-//     {
-//         int size = qMin(toSend, 100);//以前是1000
-//         if((receive = send(client_socket, send_buffer + finished, size, 0)))  //send wenzi
-//         {
-//             if(receive==-1)
-//             {
-//                 printf ("receive error");
-//                 break;
-//             }
-//             else
-//             {
-//                 toSend -= receive;// shengxia de unsend
-//                 finished += receive; //sended
-//             }
-//         }
-//        // printf("send image success");
-//     }
-
-//     //5.close socket
-//     close(client_socket);
-//     qDebug("close socket\n");
-}
-
 
 
 /*****************************************************************************
@@ -312,6 +246,9 @@ void MainWindow::closeEvent(QCloseEvent *event){
   // add your destory function
 	QMainWindow::closeEvent(event);
 }
+
+
+
 
 /*****************************************************************************
 ** Implementation [ Add Your Button Response Here ]
