@@ -122,8 +122,8 @@ void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
           fileTime = localtime(&t);
          // strftime(filePath,100,"/home/nvidia/qt_ros_ws/imag3/%Y%m%d_%H%M%S.jpg",fileTime);
          // strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
-          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image3/%H%M%S.jpg",fileTime);
-          strftime(fileName,100,"%H%M%S.jpg",fileTime);
+          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image3/%Y%m%d_%H%M%S.jpg",fileTime);
+          strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
 
           cv::imwrite(filePath,socket2Send);
           // TODO, socket send

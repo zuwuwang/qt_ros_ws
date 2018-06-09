@@ -109,8 +109,8 @@ void ImageSaveNode::imageTransCallback(const sensor_msgs::ImageConstPtr& msg){
           fileTime = localtime(&t);
          // strftime(filePath,100,"/home/nvidia/qt_ros_ws/image/%Y%m%d_%H%M%S.jpg",fileTime);
          // strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
-          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image/%H%M%S.jpg",fileTime);
-          strftime(fileName,100,"%H%M%S.jpg",fileTime);
+          strftime(filePath,100,"/home/nvidia/qt_ros_ws/image/%Y%m%d_%H%M%S.jpg",fileTime);
+          strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
 
           cv::imwrite(filePath,cameraImage);
           Q_EMIT displayCameraImage();  // trigger signal , to run slot func: display in qt label

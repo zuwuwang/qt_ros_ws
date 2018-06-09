@@ -89,29 +89,29 @@ void MainWindow::showNoMasterMessage() {
 void MainWindow::on_button_connect_clicked(bool check )
 {
   // check environment
-//  if ( ui.checkbox_use_environment->isChecked() )
-//  {
-//    if ( !qnode.init() )
-//    {
-//      showNoMasterMessage();
-//    }
-//    else
-//    {
-//      ui.button_connect->setEnabled(false);
-//    }
-//  }
-//  // qnode init
-//  if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
-//  {
-//    showNoMasterMessage();
-//  }
-//  else
-//  {
-//    ui.button_connect->setEnabled(false);
-//    ui.line_edit_master->setReadOnly(true);
-//    ui.line_edit_host->setReadOnly(true);
-//    ui.line_edit_topic->setReadOnly(true);
-//  }
+  if ( ui.checkbox_use_environment->isChecked() )
+  {
+    if ( !qnode.init() )
+    {
+      showNoMasterMessage();
+    }
+    else
+    {
+      ui.button_connect->setEnabled(false);
+    }
+  }
+  // qnode init
+  if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
+  {
+    showNoMasterMessage();
+  }
+  else
+  {
+    ui.button_connect->setEnabled(false);
+    ui.line_edit_master->setReadOnly(true);
+    ui.line_edit_host->setReadOnly(true);
+    ui.line_edit_topic->setReadOnly(true);
+  }
 
   //TODO,RUN YOUR NODE
   if( ! imagesavenode.init() )
@@ -181,8 +181,8 @@ void MainWindow::displayCameraImageLabel(){
   time_t t;
   t = time(NULL);
   fileTime = localtime(&t);
-  strftime(filePath,100,"/home/nvidia/qt_ros_ws/image2/%H%M%S.jpg",fileTime);
-  strftime(fileName,100,"%H%M%S.jpg",fileTime);
+  strftime(filePath,100,"/home/nvidia/qt_ros_ws/image2/%Y%m%d_%H%M%S.jpg",fileTime);
+  strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
 
   cv::Mat img2display = imagesavenode.cameraImage;
   cv::imwrite(filePath,img2display);
