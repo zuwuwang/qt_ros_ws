@@ -14,7 +14,7 @@
 #define guitest_SOCKETSENDNODE_HPP_
 
 #define HELLO_WORLD_SERVER_PORT  37677
-#define SERVER_IP_ADDRESS "112.74.89.57"  // 地面工作站IP
+#define SERVER_IP_ADDRESS "112.74.89.58"  // 地面工作站IP
 #define BUFFER_SIZE 1024
 
 

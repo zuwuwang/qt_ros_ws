@@ -68,7 +68,7 @@ bool ImageSaveNode::init() {
   // Add your ros communications here.
   image_transport::ImageTransport transport(n);
   cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this);
-  start(); // Match with run() function
+ // start(); // Match with run() function
   return true;
 }
 

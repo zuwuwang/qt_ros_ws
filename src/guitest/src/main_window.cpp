@@ -95,7 +95,10 @@ void MainWindow::showSocketInitFailedMessage()
 
 void MainWindow::on_button_connect_clicked(bool check )
 {
-  // check environment
+  /*******************
+   *   init
+   * *********************/
+  //  environment init
   if ( ui.checkbox_use_environment->isChecked() )
   {
     if ( !qnode.init() )
@@ -114,21 +117,19 @@ void MainWindow::on_button_connect_clicked(bool check )
   }
   else
   {
-
     ui.button_connect->setEnabled(false);
     ui.line_edit_master->setReadOnly(true);
     ui.line_edit_host->setReadOnly(true);
     ui.line_edit_topic->setReadOnly(true);
   }
-
-  //TODO,RUN YOUR NODE
+  // imagesavenode init
   if( ! imagesavenode.init() )
   {
     showNoMasterMessage();
   }
   else
   {
-    ROS_INFO(" run imageSaveNode ");
+
   }
  // socketsendnode init
   if( ! socketsendnode.init() )
@@ -139,7 +140,15 @@ void MainWindow::on_button_connect_clicked(bool check )
   {
 
   }
+  // node to init
 
+
+  /*********************
+   * node.start
+   * ********************/
+  qnode.start();
+  imagesavenode.start();
+  socketsendnode.start();
  // speech node
 
  // calPosition node

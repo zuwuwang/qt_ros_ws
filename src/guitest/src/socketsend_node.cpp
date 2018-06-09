@@ -80,7 +80,7 @@ bool SocketSendNode::init() {
       }
   qDebug("success connect To %s!\n",SERVER_IP_ADDRESS);
 
-  start();  // thread function
+  //start();  // thread function
   return true;
 }
 
