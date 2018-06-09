@@ -124,22 +124,35 @@ void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
          // strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
           strftime(filePath,100,"/home/nvidia/qt_ros_ws/image3/%Y%m%d_%H%M%S.jpg",fileTime);
           strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
-
           cv::imwrite(filePath,socket2Send);
+
           // TODO, socket send
-          vector<uchar> socket2SendEncode;
-          cv::imencode(".jpg",socket2Send,socket2SendEncode);
-          int socket2SendEncodeSize = socket2SendEncode.size();
-          uchar* socketSendBuffer = new uchar[socket2SendEncodeSize];
-          copy(socket2SendEncode.begin(),socket2SendEncode.end(),socketSendBuffer);
+//          vector<uchar> socket2SendEncode;
+//          cv::imencode(".jpg",socket2Send,socket2SendEncode);
+//          int socket2SendEncodeSize = socket2SendEncode.size();
+//          uchar* socketSendBuffer = new uchar[socket2SendEncodeSize];
+//          copy(socket2SendEncode.begin(),socket2SendEncode.end(),socketSendBuffer);
 
-          int toSendSize = socket2SendEncodeSize, receive = 0, finished = 0;
-          char char_len[10];
-
-          send(client_socket,fileName,30,0);
-
-
-
+//          // send $$
+//          send(client_socket, "$$", 2, 0);
+//          int socket2SendSize = socket2SendEncodeSize, received = 0, finished = 0;
+//          char char_len[10]; //fileLen[10]
+//          // send fineName
+//          send(client_socket,fileName,30,0);
+//          // send fileSize
+//          sprintf(char_len,"%d",socket2SendSize);
+//          send(client_socket, char_len, 10, 0);
+//          while( socket2SendSize >0 )
+//          {
+//            int realSendSize =qMin(socket2SendSize, 1000);
+//            received = send(client_socket, socketSendBuffer + finished, realSendSize, 0);
+//            socket2SendSize -= received;
+//            finished += finished;
+//          }
+//          // receive resault
+//          recv(client_socket, peopleNum, 10, 0);
+//          // ui display mcnnResault
+          Q_EMIT mcnnResault();
        }
         catch (cv_bridge::Exception& e)
         {

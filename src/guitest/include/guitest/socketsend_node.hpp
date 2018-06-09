@@ -68,6 +68,7 @@ public:
   void socketSendImage(const sensor_msgs::ImageConstPtr& msg);
   bool socketSendFlag = true;
   cv::Mat socket2Send;
+  char peopleNum[11] = {0};
   /*********************
   ** Logging
   **********************/
@@ -87,6 +88,7 @@ Q_SIGNALS:
   void rosShutdown();
   void socketSend();
     void socketSendFailed();
+    void mcnnResault();
 
 private:
   int init_argc;

@@ -53,9 +53,9 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   /*********************
   ** TODO HERE,ADD YOUR trigger FUNC
   **********************/
-  // display in qt label
+  // display in ui
     QObject::connect(&imagesavenode,SIGNAL(displayCameraImage()),this,SLOT(displayCameraImageLabel()));
-
+    QObject::connect(&socketsendnode,SIGNAL(mcnnResault()),this,SLOT(mcnnResaultShow()));
 
     /*********************
     ** Auto Start
@@ -195,6 +195,10 @@ void MainWindow::displayCameraImageLabel(){
   ui.label_cameraImg->setPixmap(QPixmap::fromImage(cameraImageScaled));
 }
 
+void MainWindow::mcnnResaultShow(){
+ // ui.line_edit_mcnn->setText(socketsendnode.peopleNum);
+   ui.line_edit_mcnn->setText("5");
+}
 
 /*****************************************************************************
 ** Implementation [Menu]

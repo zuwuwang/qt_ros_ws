@@ -68,6 +68,7 @@ public Q_SLOTS:
     *******************************************/
     void updateLoggingView(); // no idea why this can't connect automatically
     void displayCameraImageLabel();
+    void mcnnResaultShow();
 
 
 private:
