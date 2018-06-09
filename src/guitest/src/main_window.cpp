@@ -196,8 +196,9 @@ void MainWindow::displayCameraImageLabel(){
 }
 
 void MainWindow::mcnnResaultShow(){
- // ui.line_edit_mcnn->setText(socketsendnode.peopleNum);
-   ui.line_edit_mcnn->setText("5");
+  long num =atof(socketsendnode.peopleNum);
+  QString mcnnNum = QString::number( num,10);
+  ui.line_edit_mcnn->setText(mcnnNum);
 }
 
 /*****************************************************************************

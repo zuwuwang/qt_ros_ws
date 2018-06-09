@@ -68,7 +68,8 @@ public:
   void socketSendImage(const sensor_msgs::ImageConstPtr& msg);
   bool socketSendFlag = true;
   cv::Mat socket2Send;
-  char peopleNum[11] = {0};
+  char* peopleNum = "456" ;
+
   /*********************
   ** Logging
   **********************/
