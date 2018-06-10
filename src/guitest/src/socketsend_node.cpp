@@ -39,7 +39,7 @@ bool SocketSendNode::init() {
   ros::NodeHandle n;
  // Add your ros communications here. Socket Init Here, Connect Socket
  // image_transport::ImageTransport transport_socket(n);
- // socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+ // socketSend_subscriber = transport_socket.subscribe("/camera/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
 
   qDebug("start  init socket ...");
      //get server ip addr
@@ -91,7 +91,7 @@ void SocketSendNode::run() {
   {
     // ros img to opencv img
     image_transport::ImageTransport transport_socket(n);
-    socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+    socketSend_subscriber = transport_socket.subscribe("/camera/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
     socketSendFlag = true;
     ros::spinOnce();
     loop_rate.sleep();
