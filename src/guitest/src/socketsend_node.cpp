@@ -37,9 +37,9 @@ bool SocketSendNode::init() {
   }
   ros::start(); // explicitly needed since our nodehandle is going out of scope.
   ros::NodeHandle n;
-  // Add your ros communications here. Socket Init Here, Connect Socket
-  image_transport::ImageTransport transport_socket(n);
-  socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+ // Add your ros communications here. Socket Init Here, Connect Socket
+ // image_transport::ImageTransport transport_socket(n);
+ // socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
 
   qDebug("start  init socket ...");
      //get server ip addr
@@ -112,42 +112,49 @@ void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
           socket2Send = cv_bridge::toCvShare(msg, "bgr8")->image;
           struct tm* fileTime;
           char filePath[100] ;
-          char fileName[100] ;
+          char fileName[20] ;
           time_t t;
           t = time(NULL);
           fileTime = localtime(&t);
          // strftime(filePath,100,"/home/nvidia/qt_ros_ws/imag3/%Y%m%d_%H%M%S.jpg",fileTime);
          // strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
           strftime(filePath,100,"/home/nvidia/qt_ros_ws/image3/%Y%m%d_%H%M%S.jpg",fileTime);
-          strftime(fileName,100,"%Y%m%d_%H%M%S.jpg",fileTime);
-          cv::imwrite(filePath,socket2Send);
+          strftime(fileName,20,"%Y%m%d_%H%M%S.jpg",fileTime);
+         // cv::imwrite(filePath,socket2Send);
 
           // TODO, socket send
-//          vector<uchar> socket2SendEncode;
-//          cv::imencode(".jpg",socket2Send,socket2SendEncode);
-//          int socket2SendEncodeSize = socket2SendEncode.size();
-//          uchar* socketSendBuffer = new uchar[socket2SendEncodeSize];
-//          copy(socket2SendEncode.begin(),socket2SendEncode.end(),socketSendBuffer);
+          // local img test
+         // cv::Mat test = cv::imread("/home/nvidia/qt_ros_ws/devel/lib/guitest/1.jpg");
+          vector<uchar> socket2SendEncode;
+          cv::imencode(".jpg",socket2Send,socket2SendEncode);
+          cv::Mat decode;
+          decode = cv::imdecode(socket2SendEncode,CV_LOAD_IMAGE_COLOR);
+          cv::imwrite(filePath,decode);
 
-//          // send $$
-//          send(client_socket, "$$", 2, 0);
-//          int socket2SendSize = socket2SendEncodeSize, received = 0, finished = 0;
-//          char char_len[10]; //fileLen[10]
-//          // send fineName
-//          send(client_socket,fileName,30,0);
-//          // send fileSize
-//          sprintf(char_len,"%d",socket2SendSize);
-//          send(client_socket, char_len, 10, 0);
-//          while( socket2SendSize >0 )
-//          {
-//            int realSendSize =qMin(socket2SendSize, 1000);
-//            received = send(client_socket, socketSendBuffer + finished, realSendSize, 0);
-//            socket2SendSize -= received;
-//            finished += finished;
-//          }
-//          // receive resault
-//          recv(client_socket, peopleNum, 10, 0);
-//          // ui display mcnnResault
+          int socket2SendSize = 3*socket2Send.rows*socket2Send.cols;
+          int socket2SendEncodeSize = socket2SendEncode.size();
+          uchar* socketSendBuffer = new uchar[socket2SendEncodeSize];
+          copy(socket2SendEncode.begin(),socket2SendEncode.end(),socketSendBuffer);
+
+          // send $$
+          // send(client_socket, "$$", 2, 0);
+          int toSend = socket2SendEncodeSize, received = 0, finished = 0;
+          char char_len[10]; // fileLen[10],save file size
+          // send fineName
+          send(client_socket,fileName,20,0);
+          // send fileSize
+          sprintf(char_len,"%d",toSend);
+          send(client_socket, char_len, 10, 0);
+          while( toSend >0 )
+          {
+            int realSendSize =qMin(toSend, 1000);
+            received = send(client_socket, socketSendBuffer + finished, realSendSize, 0);
+            toSend -= received;
+            finished += finished;
+          }
+//        // receive resault
+//        recv(client_socket, peopleNum, 10, 0);
+//        // ui display mcnnResault
           Q_EMIT mcnnResault();
        }
         catch (cv_bridge::Exception& e)
