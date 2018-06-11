@@ -10,8 +10,8 @@
 /*****************************************************************************
 ** Ifdefs
 *****************************************************************************/
-#ifndef guitest_SOCKETSENDNODE_HPP_
-#define guitest_SOCKETSENDNODE_HPP_
+#ifndef guitest_SOCKETSEND_NODE_HPP_
+#define guitest_SOCKETSEND_NODE_HPP_
 
 #define HELLO_WORLD_SERVER_PORT  18211
 #define SERVER_IP_ADDRESS "118.31.62.7"  // 地面工作站IP
@@ -104,4 +104,4 @@ private:
 
 
 } // namespace guitest
-#endif // guitest_SOCKETSENDNODE_HPP_
+#endif // guitest_SOCKETSEND_NODE_HPP_

@@ -376,6 +376,30 @@ std_msgs_generate_messages_py/fast:
 	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/std_msgs_generate_messages_py.dir/build.make guitest/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+include/guitest/moc_getgpsdata_node.o: include/guitest/moc_getgpsdata_node.cxx.o
+.PHONY : include/guitest/moc_getgpsdata_node.o
+
+# target to build an object file
+include/guitest/moc_getgpsdata_node.cxx.o:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_getgpsdata_node.cxx.o
+.PHONY : include/guitest/moc_getgpsdata_node.cxx.o
+
+include/guitest/moc_getgpsdata_node.i: include/guitest/moc_getgpsdata_node.cxx.i
+.PHONY : include/guitest/moc_getgpsdata_node.i
+
+# target to preprocess a source file
+include/guitest/moc_getgpsdata_node.cxx.i:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_getgpsdata_node.cxx.i
+.PHONY : include/guitest/moc_getgpsdata_node.cxx.i
+
+include/guitest/moc_getgpsdata_node.s: include/guitest/moc_getgpsdata_node.cxx.s
+.PHONY : include/guitest/moc_getgpsdata_node.s
+
+# target to generate assembly for a file
+include/guitest/moc_getgpsdata_node.cxx.s:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/include/guitest/moc_getgpsdata_node.cxx.s
+.PHONY : include/guitest/moc_getgpsdata_node.cxx.s
+
 include/guitest/moc_imagesave_node.o: include/guitest/moc_imagesave_node.cxx.o
 .PHONY : include/guitest/moc_imagesave_node.o
 
@@ -495,6 +519,30 @@ qrc_images.s: qrc_images.cxx.s
 qrc_images.cxx.s:
 	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/qrc_images.cxx.s
 .PHONY : qrc_images.cxx.s
+
+src/getgpsdata_node.o: src/getgpsdata_node.cpp.o
+.PHONY : src/getgpsdata_node.o
+
+# target to build an object file
+src/getgpsdata_node.cpp.o:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/getgpsdata_node.cpp.o
+.PHONY : src/getgpsdata_node.cpp.o
+
+src/getgpsdata_node.i: src/getgpsdata_node.cpp.i
+.PHONY : src/getgpsdata_node.i
+
+# target to preprocess a source file
+src/getgpsdata_node.cpp.i:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/getgpsdata_node.cpp.i
+.PHONY : src/getgpsdata_node.cpp.i
+
+src/getgpsdata_node.s: src/getgpsdata_node.cpp.s
+.PHONY : src/getgpsdata_node.s
+
+# target to generate assembly for a file
+src/getgpsdata_node.cpp.s:
+	cd /home/nvidia/qt_ros_ws/build && $(MAKE) -f guitest/CMakeFiles/guitest.dir/build.make guitest/CMakeFiles/guitest.dir/src/getgpsdata_node.cpp.s
+.PHONY : src/getgpsdata_node.cpp.s
 
 src/imagesave_node.o: src/imagesave_node.cpp.o
 .PHONY : src/imagesave_node.o
@@ -645,6 +693,9 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... install/local"
 	@echo "... guitest"
+	@echo "... include/guitest/moc_getgpsdata_node.o"
+	@echo "... include/guitest/moc_getgpsdata_node.i"
+	@echo "... include/guitest/moc_getgpsdata_node.s"
 	@echo "... include/guitest/moc_imagesave_node.o"
 	@echo "... include/guitest/moc_imagesave_node.i"
 	@echo "... include/guitest/moc_imagesave_node.s"
@@ -660,6 +711,9 @@ help:
 	@echo "... qrc_images.o"
 	@echo "... qrc_images.i"
 	@echo "... qrc_images.s"
+	@echo "... src/getgpsdata_node.o"
+	@echo "... src/getgpsdata_node.i"
+	@echo "... src/getgpsdata_node.s"
 	@echo "... src/imagesave_node.o"
 	@echo "... src/imagesave_node.i"
 	@echo "... src/imagesave_node.s"

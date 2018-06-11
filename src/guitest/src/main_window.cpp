@@ -35,6 +35,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   , qnode(argc,argv)  //TODO HERE,ADD YOUR NODE INIT WITH PARAM
   , imagesavenode(argc,argv)
   , socketsendnode(argc,argv)
+  , getgpsdatanode(argc,argv)
+
 {
 	ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
     QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt())); // qApp is a global variable for the application
@@ -140,8 +142,16 @@ void MainWindow::on_button_connect_clicked(bool check )
   {
 
   }
-  // node to init
+  // getgpsdatanode to init
+  if( !getgpsdatanode.init() )
+  {
 
+  }
+  else
+  {
+
+  }
+  // ***node to init
 
   /*********************
    * node.start
@@ -149,6 +159,7 @@ void MainWindow::on_button_connect_clicked(bool check )
   qnode.start();
  // imagesavenode.start();
   socketsendnode.start();
+ // getgpsdatanode.start();
  // speech node
 
  // calPosition node
@@ -189,8 +200,6 @@ void MainWindow::updateLoggingView() {
 
 void MainWindow::displayCameraImageLabel(){
   //TODO
-  // display image in widget
-         //ui.label_cameraImg->
   struct tm* fileTime;
   char filePath[100] = {0};
   char fileName[100] = {0};

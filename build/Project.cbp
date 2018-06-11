@@ -472,6 +472,8 @@
          </MakeCommands>
       </Target>
       </Build>
+      <Unit filename="/home/nvidia/qt_ros_ws/src/guitest/src/getgpsdata_node.cpp">
+      </Unit>
       <Unit filename="/home/nvidia/qt_ros_ws/src/guitest/src/imagesave_node.cpp">
       </Unit>
       <Unit filename="/home/nvidia/qt_ros_ws/src/guitest/src/main.cpp">

@@ -21,7 +21,7 @@
 #include "qnode.hpp"
 #include "imagesave_node.hpp"
 #include "socketsend_node.hpp"
-
+#include "getgpsdata_node.hpp"
 
 /*****************************************************************************
 ** Namespace
@@ -77,6 +77,7 @@ private:
   //TODO HERE ,INSTANTIATION YOUR NODE TO USE IN MAINWINDOW
   ImageSaveNode imagesavenode;
   SocketSendNode socketsendnode;
+  GetGpsDataNode getgpsdatanode;
 };
 
 }  // namespace guitest

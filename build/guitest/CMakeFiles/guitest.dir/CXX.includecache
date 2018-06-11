@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_getgpsdata_node.cxx
+../../../../src/guitest/include/guitest/getgpsdata_node.hpp
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/getgpsdata_node.hpp
+
 /home/nvidia/qt_ros_ws/build/guitest/include/guitest/moc_imagesave_node.cxx
 ../../../../src/guitest/include/guitest/imagesave_node.hpp
 /home/nvidia/qt_ros_ws/src/guitest/include/guitest/imagesave_node.hpp
@@ -25,6 +29,42 @@
 /home/nvidia/qt_ros_ws/build/guitest/qrc_images.cxx
 QtCore/qglobal.h
 -
+
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/getgpsdata_node.hpp
+ros/ros.h
+-
+string
+-
+QThread
+-
+QStringListModel
+-
+std_msgs/String.h
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/std_msgs/String.h
+sstream
+-
+stdio.h
+-
+errno.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+termios.h
+-
+stdlib.h
+-
+sys/types.h
+-
+unistd.h
+-
+iostream
+-
+gps.h
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/gps.h
+
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/gps.h
 
 /home/nvidia/qt_ros_ws/src/guitest/include/guitest/imagesave_node.hpp
 ros/ros.h
@@ -57,6 +97,8 @@ imagesave_node.hpp
 /home/nvidia/qt_ros_ws/src/guitest/include/guitest/imagesave_node.hpp
 socketsend_node.hpp
 /home/nvidia/qt_ros_ws/src/guitest/include/guitest/socketsend_node.hpp
+getgpsdata_node.hpp
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/getgpsdata_node.hpp
 
 /home/nvidia/qt_ros_ws/src/guitest/include/guitest/qnode.hpp
 ros/ros.h
@@ -105,6 +147,20 @@ cv_bridge/cv_bridge.h
 -
 QDebug
 -
+
+/home/nvidia/qt_ros_ws/src/guitest/src/getgpsdata_node.cpp
+ros/ros.h
+-
+ros/network.h
+-
+string
+-
+std_msgs/String.h
+-
+sstream
+-
+../include/guitest/getgpsdata_node.hpp
+/home/nvidia/qt_ros_ws/src/guitest/include/guitest/getgpsdata_node.hpp
 
 /home/nvidia/qt_ros_ws/src/guitest/src/imagesave_node.cpp
 ros/ros.h

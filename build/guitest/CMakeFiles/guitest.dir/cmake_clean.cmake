@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "qrc_images.cxx"
   "ui_main_window.h"
+  "include/guitest/moc_getgpsdata_node.cxx"
   "include/guitest/moc_main_window.cxx"
   "include/guitest/moc_imagesave_node.cxx"
   "include/guitest/moc_socketsend_node.cxx"
@@ -10,7 +11,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/guitest.dir/src/qnode.cpp.o"
   "CMakeFiles/guitest.dir/src/main.cpp.o"
   "CMakeFiles/guitest.dir/src/imagesave_node.cpp.o"
+  "CMakeFiles/guitest.dir/src/getgpsdata_node.cpp.o"
   "CMakeFiles/guitest.dir/qrc_images.cxx.o"
+  "CMakeFiles/guitest.dir/include/guitest/moc_getgpsdata_node.cxx.o"
   "CMakeFiles/guitest.dir/include/guitest/moc_main_window.cxx.o"
   "CMakeFiles/guitest.dir/include/guitest/moc_imagesave_node.cxx.o"
   "CMakeFiles/guitest.dir/include/guitest/moc_socketsend_node.cxx.o"
