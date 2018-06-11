@@ -39,7 +39,7 @@ bool SocketSendNode::init() {
   ros::NodeHandle n;
  // Add your ros communications here. Socket Init Here, Connect Socket
  // image_transport::ImageTransport transport_socket(n);
- // socketSend_subscriber = transport_socket.subscribe("/camera/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+ // socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
 
   qDebug("start  init socket ...");
      //get server ip addr
@@ -91,7 +91,7 @@ void SocketSendNode::run() {
   {
     // ros img to opencv img
     image_transport::ImageTransport transport_socket(n);
-    socketSend_subscriber = transport_socket.subscribe("/camera/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
+    socketSend_subscriber = transport_socket.subscribe("/usb_cam/image_raw",1,&SocketSendNode::socketSendImage,this); // TX2 different
     socketSendFlag = true;
     ros::spinOnce();
     loop_rate.sleep();
@@ -136,6 +136,7 @@ void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
           uchar* socketSendBuffer = new uchar[socket2SendEncodeSize];
           copy(socket2SendEncode.begin(),socket2SendEncode.end(),socketSendBuffer);
 
+
           // send $$
           // send(client_socket, "$$", 2, 0);
           int toSend = socket2SendEncodeSize, received = 0, finished = 0;
@@ -145,12 +146,14 @@ void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
           // send fileSize
           sprintf(char_len,"%d",toSend);
           send(client_socket, char_len, 10, 0);
+          int count = 0;
           while( toSend >0 )
           {
-            int realSendSize =qMin(toSend, 1000);
+            int realSendSize =qMin(toSend, 1024);
             received = send(client_socket, socketSendBuffer + finished, realSendSize, 0);
             toSend -= received;
             finished += finished;
+            count = count +1;
           }
 //        // receive resault
 //        recv(client_socket, peopleNum, 10, 0);

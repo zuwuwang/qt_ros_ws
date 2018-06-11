@@ -67,7 +67,7 @@ bool ImageSaveNode::init() {
   cv::startWindowThread();
   // Add your ros communications here.
   image_transport::ImageTransport transport(n);
-  cameraImage_subscriber = transport.subscribe("/camera/image_raw",1,&ImageSaveNode::imageTransCallback,this);
+  cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this);
  // start(); // Match with run() function
   return true;
 }
@@ -79,7 +79,7 @@ void ImageSaveNode::run() {
   ros::Timer captureTimer = n.createTimer(ros::Duration(5),&ImageSaveNode::captureTimerCallback,this);
   // ros img to opencv img
   image_transport::ImageTransport transport(n);
-  cameraImage_subscriber = transport.subscribe("/camera/image_raw",1,&ImageSaveNode::imageTransCallback,this); // TX2 different
+  cameraImage_subscriber = transport.subscribe("/usb_cam/image_raw",1,&ImageSaveNode::imageTransCallback,this); // TX2 different
   saveImageFlag = true;
   ros::spin();
 
