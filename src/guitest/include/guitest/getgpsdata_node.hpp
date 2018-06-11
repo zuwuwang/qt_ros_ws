@@ -61,6 +61,8 @@ public:
 
 Q_SIGNALS:
   void loggingUpdated();
+  void gpsInitFailed();
+  void gpsReadFailed();
     void rosShutdown();
 
 private:

@@ -49,6 +49,7 @@ public:
 
   void showNoMasterMessage();
   void showSocketInitFailedMessage();
+  void showGPSInitFailedMessage();
 
 
 public Q_SLOTS:
@@ -69,6 +70,7 @@ public Q_SLOTS:
     void updateLoggingView(); // no idea why this can't connect automatically
     void displayCameraImageLabel();
     void mcnnResaultShow();
+    void showGPSReadFailedMessage();
 
 
 private:

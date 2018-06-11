@@ -50,9 +50,15 @@ bool GetGpsDataNode::init() {
   }
   ros::start(); // explicitly needed since our nodehandle is going out of scope.
   ros::NodeHandle n;
-  // Add your ros communications here.
-
-  start();
+  // Add your ros init function here.
+  //if((fd=open(dev_name,O_RDWR|O_NOCTTY|O_NDELAY))<0)
+  if((fd=open(dev_name,O_RDWR))<0)
+  {
+          perror("Can't Open the ttyUSB0 Serial Port");
+          Q_EMIT gpsInitFailed();
+  }
+  set_serial( fd,9600,8,'N',1);
+  //  start();
   return true;
 }
 
@@ -67,7 +73,7 @@ void GetGpsDataNode::run() {
          if((readLabel = read(fd,buff,sizeof(buff)))<0)
           {
              perror("read error");
-             // showErrorMsgs();
+             Q_EMIT gpsReadFailed();
           }
           printf("buff:%s\n",buff);
           memset(&gprmc, 0 , sizeof(gprmc));

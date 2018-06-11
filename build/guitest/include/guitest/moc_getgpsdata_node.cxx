@@ -22,22 +22,25 @@ static const uint qt_meta_data_guitest__GetGpsDataNode[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       4,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       25,   24,   24,   24, 0x05,
       42,   24,   24,   24, 0x05,
+      58,   24,   24,   24, 0x05,
+      74,   24,   24,   24, 0x05,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_guitest__GetGpsDataNode[] = {
     "guitest::GetGpsDataNode\0\0loggingUpdated()\0"
+    "gpsInitFailed()\0gpsReadFailed()\0"
     "rosShutdown()\0"
 };
 
@@ -48,7 +51,9 @@ void guitest::GetGpsDataNode::qt_static_metacall(QObject *_o, QMetaObject::Call 
         GetGpsDataNode *_t = static_cast<GetGpsDataNode *>(_o);
         switch (_id) {
         case 0: _t->loggingUpdated(); break;
-        case 1: _t->rosShutdown(); break;
+        case 1: _t->gpsInitFailed(); break;
+        case 2: _t->gpsReadFailed(); break;
+        case 3: _t->rosShutdown(); break;
         default: ;
         }
     }
@@ -87,9 +92,9 @@ int guitest::GetGpsDataNode::qt_metacall(QMetaObject::Call _c, int _id, void **_
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }
@@ -101,8 +106,20 @@ void guitest::GetGpsDataNode::loggingUpdated()
 }
 
 // SIGNAL 1
-void guitest::GetGpsDataNode::rosShutdown()
+void guitest::GetGpsDataNode::gpsInitFailed()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, 0);
+}
+
+// SIGNAL 2
+void guitest::GetGpsDataNode::gpsReadFailed()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
+}
+
+// SIGNAL 3
+void guitest::GetGpsDataNode::rosShutdown()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -45,6 +45,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     QObject::connect(&qnode, SIGNAL(rosShutdown()), this, SLOT(close()));
     QObject::connect(&imagesavenode,SIGNAL(rosShutdown()),this,SLOT(close()));
     QObject::connect(&socketsendnode,SIGNAL(rosShutdown()),this,SLOT(close()));
+    QObject::connect(&getgpsdatanode,SIGNAL(gpsReadFailed()),this,SLOT(showGPSReadFailedMessage()));
 
   /*********************
   ** Logging & Camera image display
@@ -78,7 +79,7 @@ MainWindow::~MainWindow() {}
 
 void MainWindow::showNoMasterMessage() {
 	QMessageBox msgBox;
-  msgBox.setText("Couldn't find the ros master,please run commond 'roscor'.");
+  msgBox.setText("can't find the ros master, run commond 'roscore'.");
 	msgBox.exec();
     close();
 }
@@ -86,7 +87,22 @@ void MainWindow::showNoMasterMessage() {
 void MainWindow::showSocketInitFailedMessage()
 {
   QMessageBox msgBox;
-  msgBox.setText(" Connect server failed, please try again.");
+  msgBox.setText(" Connect server failed, please check whether run  ./natapp  -authtoken 96d64ba4448d74eb ");
+  msgBox.exec();
+    close();
+}
+
+void MainWindow::showGPSInitFailedMessage()
+{
+  QMessageBox msgBox;
+  msgBox.setText(" GPS init failed, please check gps connecion ....");
+  msgBox.exec();
+    close();
+}
+
+void MainWindow::showGPSReadFailedMessage(){
+  QMessageBox msgBox;
+  msgBox.setText(" Read GPS data failed, please turn to GetGpsDataNode.run to debug ....");
   msgBox.exec();
     close();
 }
@@ -97,10 +113,11 @@ void MainWindow::showSocketInitFailedMessage()
 
 void MainWindow::on_button_connect_clicked(bool check )
 {
-  /*******************
-   *   init
-   * *********************/
-  //  environment init
+//   node/environment  init
+
+  /*********************
+   *   environment init
+   * *************************/
   if ( ui.checkbox_use_environment->isChecked() )
   {
     if ( !qnode.init() )
@@ -112,10 +129,12 @@ void MainWindow::on_button_connect_clicked(bool check )
       ui.button_connect->setEnabled(false);
     }
   }
-  // qnode init
+  /* *****************
+   * qnode init
+   * *************/
   if ( ! qnode.init(ui.line_edit_master->text().toStdString(),ui.line_edit_host->text().toStdString()) )
   {
-    showSocketInitFailedMessage();
+    showNoMasterMessage();
   }
   else
   {
@@ -124,16 +143,20 @@ void MainWindow::on_button_connect_clicked(bool check )
     ui.line_edit_host->setReadOnly(true);
     ui.line_edit_topic->setReadOnly(true);
   }
-  // imagesavenode init
-//  if( ! imagesavenode.init() )
-//  {
-//    showNoMasterMessage();
-//  }
-//  else
-//  {
+  /********************
+   * imagesavenode init
+   * ****************/
+  if( ! imagesavenode.init() )
+  {
+    showNoMasterMessage();
+  }
+  else
+  {
 
-//  }
-// // socketsendnode init
+  }
+ /*************************
+  *  socketsendnode init
+  * **********************/
   if( ! socketsendnode.init() )
   {
        showSocketInitFailedMessage();
@@ -142,24 +165,26 @@ void MainWindow::on_button_connect_clicked(bool check )
   {
 
   }
-  // getgpsdatanode to init
-  if( !getgpsdatanode.init() )
-  {
+  /*******************************
+   *  getgpsdatanode to init
+   * *********************************/
+//  if( !getgpsdatanode.init() )
+//  {
+//    showGPSInitFailedMessage();
+//  }
+//  else
+//  {
 
-  }
-  else
-  {
-
-  }
+//  }
   // ***node to init
 
   /*********************
-   * node.start
+   * node   start()
    * ********************/
-  qnode.start();
- // imagesavenode.start();
+//  qnode.start();
+//  imagesavenode.start();
   socketsendnode.start();
- // getgpsdatanode.start();
+//  getgpsdatanode.start();
  // speech node
 
  // calPosition node
