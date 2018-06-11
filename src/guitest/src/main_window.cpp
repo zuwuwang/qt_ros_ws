@@ -317,17 +317,15 @@ void MainWindow::on_button_onestepSLAM_clicked(bool checked){
 
 void MainWindow::on_button_roscore_clicked(bool checked)
 {
-//  system("gnome-terminal -x bash -c 'source /home/nvidia/qt_ros_ws/devel/setup.bash;roscore limited:=true'&"); // this is run on TX2
-//  system("gnome-terminal  -x bash -c ' roscore '");  // this cmd is run on asus 14.04
 //  QWebView webmap;
 //  webmap.load(QUrl("http://www.baidu.com"));
 //  webmap.load(QUrl::fromLocalFile("file:///home/nvidia/qt_ros_ws/test.html"));
 //  webmap.show();
-  system("gnome-terminal  -x bash -c ' roscore '");
+  system("gnome-terminal  -x bash -c ' roscore '&");
 }
 
 void MainWindow::on_button_openCam_clicked(bool checked){
-  system("gnome-terminal  -x bash -c ' roslaunch usb_cam usb_cam-test.launch '");
+  system("gnome-terminal  -x bash -c ' roslaunch usb_cam usb_cam-test.launch limited:=true'&");
 }
 
 }  // namespace guitest
