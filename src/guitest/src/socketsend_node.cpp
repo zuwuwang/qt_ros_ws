@@ -149,7 +149,7 @@ void SocketSendNode::socketSendImage(const sensor_msgs::ImageConstPtr &msg){
           int count = 0;
           while( toSend >0 )
           {
-            int realSendSize =qMin(toSend, 1024);
+            int realSendSize =qMin(toSend, 30720);
             received = send(client_socket, socketSendBuffer + finished, realSendSize, 0);
             toSend -= received;
             finished += finished;
